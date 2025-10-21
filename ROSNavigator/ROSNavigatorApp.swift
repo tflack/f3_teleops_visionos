@@ -24,7 +24,7 @@ struct ROSNavigatorApp: App {
         }
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            ImmersiveView()
+            SpatialTeleopView()
                 .environment(appModel)
                 .onAppear {
                     appModel.immersiveSpaceState = .open
