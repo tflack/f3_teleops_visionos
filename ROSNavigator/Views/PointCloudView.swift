@@ -30,8 +30,8 @@ struct PointCloudView: View {
                     .onChanged { value in
                         isDragging = true
                         let sensitivity: Double = 0.3
-                        rotation.yaw += value.translation.x * sensitivity
-                        rotation.pitch = max(-89, min(89, rotation.pitch - value.translation.y * sensitivity))
+                        rotation.yaw += value.translation.width * sensitivity
+                        rotation.pitch = max(-89, min(89, rotation.pitch - value.translation.height * sensitivity))
                     }
                     .onEnded { _ in
                         isDragging = false
@@ -42,7 +42,7 @@ struct PointCloudView: View {
                 rotation = (pitch: 17.0, yaw: -168.0)
                 zoom = 3.0
             }
-            .scaleEffect(zoom)
+            .scaleEffect(CGFloat(zoom))
             .gesture(
                 MagnificationGesture()
                     .onChanged { value in
@@ -110,24 +110,8 @@ struct PointCloudView: View {
               let pointStep = data["point_step"] as? UInt32,
               let dataString = data["data"] as? String else { return }
         
-        // Parse fields to find XYZ and RGB offsets
-        var xOffset: UInt32 = 0
-        var yOffset: UInt32 = 0
-        var zOffset: UInt32 = 0
-        var rgbOffset: UInt32 = 0
-        
-        for field in fields {
-            if let name = field["name"] as? String,
-               let offset = field["offset"] as? UInt32 {
-                switch name {
-                case "x": xOffset = offset
-                case "y": yOffset = offset
-                case "z": zOffset = offset
-                case "rgb": rgbOffset = offset
-                default: break
-                }
-            }
-        }
+        // Note: Field parsing for XYZ and RGB offsets could be implemented here
+        // if needed for more advanced point cloud processing
         
         // Convert base64 data to binary
         guard let binaryData = Data(base64Encoded: dataString) else { return }
@@ -194,9 +178,9 @@ struct PointCloudCanvasView: View {
             // Transform and project points
             for point in points {
                 // Rotate around Y (yaw)
-                var x = Double(point.x) * cosYaw - Double(point.z) * sinYaw
-                var z = Double(point.x) * sinYaw + Double(point.z) * cosYaw
-                var y = Double(point.y)
+                let x = Double(point.x) * cosYaw - Double(point.z) * sinYaw
+                let z = Double(point.x) * sinYaw + Double(point.z) * cosYaw
+                let y = Double(point.y)
                 
                 // Rotate around X (pitch)
                 let y2 = y * cosPitch - z * sinPitch

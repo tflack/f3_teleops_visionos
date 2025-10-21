@@ -18,11 +18,12 @@ struct SpatialTeleopView: View {
     @State private var actionManager: ActionManager?
     @State private var windowCoordinator = WindowCoordinator()
     @State private var nativeROS2Bridge: ROS2NativeBridge?
+    @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
         RealityView { content in
             // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
+            if let immersiveContentEntity = try? await Entity(named: "Immersive", in: Bundle.main) {
                 content.add(immersiveContentEntity)
             }
         } update: { content in
@@ -123,13 +124,11 @@ struct SpatialTeleopView: View {
         // Monitor gamepad button presses
         Timer.publish(every: 0.016, on: .main, in: .common) // ~60Hz
             .autoconnect()
-            .sink { [weak self] _ in
-                self?.processGamepadButtons()
+            .sink { _ in
+                processGamepadButtons()
             }
             .store(in: &cancellables)
     }
-    
-    private var cancellables = Set<AnyCancellable>()
     
     private func processGamepadButtons() {
         guard let robotControlManager = robotControlManager else { return }
@@ -239,10 +238,16 @@ struct ControlPanelView: View {
             )
             .frame(width: 80, height: 80)
         }
-        .onChange(of: leftJoystick.values) { _, newValues in
+        .onChange(of: leftJoystick.values.x) { _, _ in
             updateHandInputs()
         }
-        .onChange(of: rightJoystick.values) { _, newValues in
+        .onChange(of: leftJoystick.values.y) { _, _ in
+            updateHandInputs()
+        }
+        .onChange(of: rightJoystick.values.x) { _, _ in
+            updateHandInputs()
+        }
+        .onChange(of: rightJoystick.values.y) { _, _ in
             updateHandInputs()
         }
     }
@@ -265,10 +270,7 @@ struct ControlPanelView: View {
     }
 }
 
-// MARK: - Joystick State
-struct JoystickState {
-    var values: (x: Double, y: Double) = (0, 0)
-}
+// MARK: - Joystick State (using the one from VirtualJoystickView)
 
 // MARK: - Joystick View
 struct JoystickView: View {
@@ -311,14 +313,14 @@ struct JoystickView: View {
                         isDragging = true
                         
                         // Limit drag distance
-                        let distance = sqrt(pow(value.translation.x, 2) + pow(value.translation.y, 2))
+                        let distance = sqrt(pow(value.translation.width, 2) + pow(value.translation.height, 2))
                         if distance <= maxDistance {
                             dragOffset = value.translation
                         } else {
-                            let angle = atan2(value.translation.y, value.translation.x)
+                            let angle = atan2(value.translation.height, value.translation.width)
                             dragOffset = CGSize(
-                                width: cos(angle) * maxDistance,
-                                height: sin(angle) * maxDistance
+                                width: Foundation.cos(angle) * maxDistance,
+                                height: Foundation.sin(angle) * maxDistance
                             )
                         }
                         

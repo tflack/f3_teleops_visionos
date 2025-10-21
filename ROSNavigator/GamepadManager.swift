@@ -185,7 +185,7 @@ class GamepadManager: ObservableObject {
         }
         
         // Start button (Toggle safety override)
-        gamepad.buttonMenu?.pressedChangedHandler = { [weak self] _, value, pressed in
+        gamepad.buttonMenu.pressedChangedHandler = { [weak self] _, value, pressed in
             Task { @MainActor in
                 self?.buttonStates[Button.start.rawValue] = pressed
             }

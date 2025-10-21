@@ -190,28 +190,18 @@ class UserExperienceManager: ObservableObject {
     func provideHapticFeedback(_ type: HapticFeedbackType) {
         guard hapticFeedbackEnabled && accessibilitySettings.hapticFeedbackEnabled else { return }
         
+        // Note: UIKit haptic feedback is not available in visionOS
+        // This is a placeholder for future visionOS-specific haptic feedback implementation
         switch type {
-        case .light:
-            let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-            impactFeedback.impactOccurred()
-        case .medium:
-            let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
-            impactFeedback.impactOccurred()
-        case .heavy:
-            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
-            impactFeedback.impactOccurred()
-        case .success:
-            let notificationFeedback = UINotificationFeedbackGenerator()
-            notificationFeedback.notificationOccurred(.success)
-        case .warning:
-            let notificationFeedback = UINotificationFeedbackGenerator()
-            notificationFeedback.notificationOccurred(.warning)
-        case .error:
-            let notificationFeedback = UINotificationFeedbackGenerator()
-            notificationFeedback.notificationOccurred(.error)
+        case .light, .medium, .heavy:
+            // Placeholder for impact feedback
+            print("🔊 Haptic feedback: \(type)")
+        case .success, .warning, .error:
+            // Placeholder for notification feedback
+            print("🔊 Haptic feedback: \(type)")
         case .selection:
-            let selectionFeedback = UISelectionFeedbackGenerator()
-            selectionFeedback.selectionChanged()
+            // Placeholder for selection feedback
+            print("🔊 Haptic feedback: \(type)")
         }
     }
     

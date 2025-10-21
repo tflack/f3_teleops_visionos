@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 /// ROS2 servo control message for arm control
 struct ServoControl: Codable {
@@ -64,7 +65,7 @@ struct ServoControl: Codable {
 }
 
 /// Arm position state for UI
-struct ArmPosition: ObservableObject {
+class ArmPosition: ObservableObject {
     @Published var joint1: Int = 500
     @Published var joint2: Int = 750
     @Published var joint3: Int = 0

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import RealityKit
+import Combine
 
 @MainActor
 class WindowCoordinator: ObservableObject {
@@ -294,7 +295,7 @@ class WindowCoordinator: ObservableObject {
     
     func optimizeForPerformance() {
         // Reduce scale of non-essential panels
-        for panelID in [.alerts, .actions] {
+        for panelID in [PanelID.alerts, PanelID.actions] {
             updatePanelScale(panelID, scale: 0.8)
         }
         
@@ -304,7 +305,7 @@ class WindowCoordinator: ObservableObject {
     
     func optimizeForVisibility() {
         // Increase scale of important panels
-        for panelID in [.camera, .controls, .status] {
+        for panelID in [PanelID.camera, PanelID.controls, PanelID.status] {
             updatePanelScale(panelID, scale: 1.2)
         }
         

@@ -31,7 +31,7 @@ class ROS2NativeBridge: ObservableObject {
     // Publishers and Subscribers
     private var publishers: [String: ROS2Publisher] = [:]
     private var subscribers: [String: ROS2Subscriber] = [:]
-    private var services: [String: ROS2Service] = [:]
+    private var services: [String: ROS2ServiceClient] = [:]
     
     // Message handlers
     private var messageHandlers: [String: (Any) -> Void] = [:]
@@ -46,7 +46,9 @@ class ROS2NativeBridge: ObservableObject {
     }
     
     deinit {
-        disconnect()
+        Task { @MainActor [weak self] in
+            self?.disconnect()
+        }
     }
     
     // MARK: - Environment Setup
@@ -87,7 +89,7 @@ class ROS2NativeBridge: ObservableObject {
     // MARK: - Connection Management
     
     func connect() {
-        guard connectionState != .connecting && connectionState != .connected else { return }
+        guard case .disconnected = connectionState else { return }
         
         connectionState = .connecting
         lastError = nil
@@ -137,7 +139,7 @@ class ROS2NativeBridge: ObservableObject {
     // MARK: - Topic Management
     
     func subscribe(to topic: String, messageType: String, handler: @escaping (Any) -> Void) {
-        guard let node = node else {
+        guard node != nil else {
             print("⚠️ ROS2 node not initialized")
             return
         }
@@ -160,7 +162,7 @@ class ROS2NativeBridge: ObservableObject {
     }
     
     func publish(to topic: String, message: [String: Any]) {
-        guard let node = node else {
+        guard node != nil else {
             print("⚠️ ROS2 node not initialized")
             return
         }
@@ -209,7 +211,7 @@ class ROS2NativeBridge: ObservableObject {
     // MARK: - Service Calls
     
     func callService(service: String, request: [String: Any] = [:], completion: @escaping (Result<[String: Any], Error>) -> Void) {
-        guard let node = node else {
+        guard node != nil else {
             completion(.failure(ROS2Error.nodeNotInitialized))
             return
         }
@@ -325,7 +327,7 @@ class ROS2NativeBridge: ObservableObject {
             throw ROS2Error.invalidMessageFormat
         }
         
-        let servoPositions = positions.compactMap { pos in
+        let servoPositions: [ServoControl.ServoPosition] = positions.compactMap { pos in
             guard let id = pos["id"] as? Int,
                   let position = pos["position"] as? Int else {
                 return nil

@@ -49,11 +49,15 @@ class AppModel {
     var cameraCount: Int = 0
     
     // MARK: - Robot Definitions
-    struct Robot: Identifiable, CaseIterable {
+    struct Robot: Identifiable, CaseIterable, Hashable {
         let id: Int
         let name: String
         let ipAddress: String
         let cameras: [String]
+        
+        var displayName: String {
+            return name
+        }
         
         static let alpha = Robot(
             id: 1,
@@ -89,7 +93,12 @@ class AppModel {
     // MARK: - Methods
     func updateROS2ConnectionState(_ state: ROS2WebSocketManager.ConnectionState) {
         ros2ConnectionState = state
-        isROS2Connected = (state == .connected)
+        switch state {
+        case .connected:
+            isROS2Connected = true
+        default:
+            isROS2Connected = false
+        }
         
         // Update robot status based on connection
         if isROS2Connected {

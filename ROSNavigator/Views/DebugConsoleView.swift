@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DebugConsoleView: View {
     @Environment(AppModel.self) var appModel
@@ -16,7 +17,8 @@ struct DebugConsoleView: View {
     @State private var selectedTab: DebugTab = .messages
     @State private var messageFilter = ""
     @State private var showOnlyErrors = false
-    @State private var performanceMetrics = PerformanceMetrics()
+    @State private var performanceMetrics = PerformanceManager.PerformanceMetrics()
+    @State private var cancellables = Set<AnyCancellable>()
     
     enum DebugTab: String, CaseIterable {
         case messages = "Messages"
@@ -103,8 +105,6 @@ struct DebugConsoleView: View {
             .store(in: &cancellables)
     }
     
-    private var cancellables = Set<AnyCancellable>()
-    
     private func updatePerformanceMetrics() {
         // Update performance metrics
         performanceMetrics.fps = calculateFPS()
@@ -130,12 +130,19 @@ struct DebugConsoleView: View {
 
 // MARK: - Messages View
 
-struct MessagesView: View {
+public struct MessagesView: View {
     let ros2Manager: ROS2WebSocketManager
     @Binding var filter: String
     @Binding var showOnlyErrors: Bool
     
     @State private var messages: [DebugMessage] = []
+    @State private var cancellables = Set<AnyCancellable>()
+    
+    public init(ros2Manager: ROS2WebSocketManager, filter: Binding<String>, showOnlyErrors: Binding<Bool>) {
+        self.ros2Manager = ros2Manager
+        self._filter = filter
+        self._showOnlyErrors = showOnlyErrors
+    }
     
     var filteredMessages: [DebugMessage] {
         var filtered = messages
@@ -153,7 +160,7 @@ struct MessagesView: View {
         return filtered.suffix(100) // Keep last 100 messages
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // Filter Controls
             HStack {
@@ -199,7 +206,6 @@ struct MessagesView: View {
             .store(in: &cancellables)
     }
     
-    private var cancellables = Set<AnyCancellable>()
 }
 
 struct MessageRowView: View {
@@ -245,7 +251,7 @@ struct MessageRowView: View {
 // MARK: - Performance View
 
 struct PerformanceView: View {
-    @Binding var metrics: PerformanceMetrics
+    @Binding var metrics: PerformanceManager.PerformanceMetrics
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -431,11 +437,11 @@ struct GamepadDebugView: View {
                 
                 if gamepadManager.isConnected {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Left Stick: (\(String(format: "%.2f", gamepadManager.leftThumbstick.x)), \(String(format: "%.2f", gamepadManager.leftThumbstick.y)))")
+                        Text("Left Stick: (\(String(format: "%.2f", gamepadManager.leftStick.x)), \(String(format: "%.2f", gamepadManager.leftStick.y)))")
                             .font(.caption)
                             .fontDesign(.monospaced)
                         
-                        Text("Right Stick: (\(String(format: "%.2f", gamepadManager.rightThumbstick.x)), \(String(format: "%.2f", gamepadManager.rightThumbstick.y)))")
+                        Text("Right Stick: (\(String(format: "%.2f", gamepadManager.rightStick.x)), \(String(format: "%.2f", gamepadManager.rightStick.y)))")
                             .font(.caption)
                             .fontDesign(.monospaced)
                         
@@ -468,9 +474,4 @@ struct DebugMessage: Identifiable {
     }
 }
 
-struct PerformanceMetrics {
-    var fps: Double = 0.0
-    var memoryUsage: Double = 0.0
-    var networkLatency: Double = 0.0
-    var cpuUsage: Double = 0.0
-}
+// PerformanceMetrics is defined in PerformanceManager.swift

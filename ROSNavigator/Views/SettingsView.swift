@@ -56,7 +56,6 @@ struct SettingsView: View {
                         switch selectedTab {
                         case .general:
                             GeneralSettingsView(
-                                appModel: appModel,
                                 userExperienceManager: userExperienceManager,
                                 showingTutorial: $showingTutorial
                             )
@@ -96,8 +95,11 @@ struct GeneralSettingsView: View {
                 Text("Robot Selection")
                     .font(.headline)
                 
-                Picker("Selected Robot", selection: $appModel.selectedRobot) {
-                    ForEach(AppModel.Robot.allCases) { robot in
+                Picker("Selected Robot", selection: Binding(
+                    get: { appModel.selectedRobot },
+                    set: { appModel.selectedRobot = $0 }
+                )) {
+                    ForEach(AppModel.Robot.allCases, id: \.self) { robot in
                         Text(robot.displayName).tag(robot)
                     }
                 }
@@ -153,8 +155,14 @@ struct GeneralSettingsView: View {
                 Text("Feedback")
                     .font(.headline)
                 
-                Toggle("Haptic Feedback", isOn: $userExperienceManager.hapticFeedbackEnabled)
-                Toggle("Audio Cues", isOn: $userExperienceManager.audioCuesEnabled)
+                Toggle("Haptic Feedback", isOn: Binding(
+                    get: { userExperienceManager.hapticFeedbackEnabled },
+                    set: { userExperienceManager.hapticFeedbackEnabled = $0 }
+                ))
+                Toggle("Audio Cues", isOn: Binding(
+                    get: { userExperienceManager.audioCuesEnabled },
+                    set: { userExperienceManager.audioCuesEnabled = $0 }
+                ))
             }
         }
     }
@@ -487,8 +495,8 @@ struct TutorialView: View {
                     .padding()
                     
                     // Progress Indicator
-                    ProgressView(value: Double(TutorialStep.allCases.firstIndex(of: currentStep) ?? 0) + 1, 
-                                total: Double(TutorialStep.allCases.count))
+                    ProgressView(value: Double(UserExperienceManager.TutorialStep.allCases.firstIndex(of: currentStep) ?? 0) + 1, 
+                                total: Double(UserExperienceManager.TutorialStep.allCases.count))
                         .padding(.horizontal)
                     
                     // Navigation Buttons

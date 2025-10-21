@@ -114,8 +114,8 @@ struct VirtualJoystickView: View {
         } else {
             let angle = atan2(translation.height, translation.width)
             dragOffset = CGSize(
-                width: cos(angle) * maxDist,
-                height: sin(angle) * maxDist
+                width: Foundation.cos(angle) * maxDist,
+                height: Foundation.sin(angle) * maxDist
             )
         }
         
@@ -310,10 +310,16 @@ struct JoystickControlPanel: View {
         .padding()
         .background(Color.black.opacity(0.1))
         .cornerRadius(15)
-        .onChange(of: leftJoystick.values) { _, _ in
+        .onChange(of: leftJoystick.values.x) { _, _ in
             notifyValuesChanged()
         }
-        .onChange(of: rightJoystick.values) { _, _ in
+        .onChange(of: leftJoystick.values.y) { _, _ in
+            notifyValuesChanged()
+        }
+        .onChange(of: rightJoystick.values.x) { _, _ in
+            notifyValuesChanged()
+        }
+        .onChange(of: rightJoystick.values.y) { _, _ in
             notifyValuesChanged()
         }
     }

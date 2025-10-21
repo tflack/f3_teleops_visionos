@@ -110,7 +110,7 @@ class ActionManager: ObservableObject {
     
     func executeQuickPick(for object: DetectedObjectInfo) {
         // Execute a quick pick action for the detected object
-        let pickMessage = [
+        let pickMessage: [String: Any] = [
             "class_name": object.className,
             "confidence": object.confidence,
             "position": [

@@ -11,12 +11,12 @@ import Network
 
 /// Manages WebSocket connection to ROS2 via rosbridge
 @MainActor
-class ROS2WebSocketManager: ObservableObject {
+public class ROS2WebSocketManager: ObservableObject {
     @Published var isConnected = false
     @Published var connectionState: ConnectionState = .disconnected
     @Published var lastError: String?
     
-    enum ConnectionState {
+    public enum ConnectionState {
         case disconnected
         case connecting
         case connected
@@ -46,13 +46,15 @@ class ROS2WebSocketManager: ObservableObject {
     }
     
     deinit {
-        disconnect()
+        Task { @MainActor [weak self] in
+            self?.disconnect()
+        }
     }
     
     // MARK: - Connection Management
     
     func connect() {
-        guard connectionState != .connecting && connectionState != .connected else { return }
+        guard case .disconnected = connectionState else { return }
         
         connectionState = .connecting
         lastError = nil
@@ -88,7 +90,7 @@ class ROS2WebSocketManager: ObservableObject {
     
     private func startReceiving() {
         webSocketTask?.receive { [weak self] result in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.handleReceiveResult(result)
             }
         }
@@ -184,7 +186,7 @@ class ROS2WebSocketManager: ObservableObject {
     private func scheduleReconnect() {
         stopReconnect()
         reconnectTimer = Timer.scheduledTimer(withTimeInterval: reconnectInterval, repeats: false) { [weak self] _ in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.connect()
             }
         }
@@ -198,7 +200,7 @@ class ROS2WebSocketManager: ObservableObject {
     private func startHeartbeat() {
         stopHeartbeat()
         heartbeatTimer = Timer.scheduledTimer(withTimeInterval: heartbeatInterval, repeats: true) { [weak self] _ in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.sendHeartbeat()
             }
         }
@@ -226,7 +228,7 @@ class ROS2WebSocketManager: ObservableObject {
         webSocketTask?.send(.string(jsonString)) { [weak self] error in
             if let error = error {
                 print("❌ Failed to send message: \(error)")
-                Task { @MainActor in
+                Task { @MainActor [weak self] in
                     self?.handleConnectionError(error)
                 }
             }
@@ -238,7 +240,7 @@ class ROS2WebSocketManager: ObservableObject {
     func subscribe(to topic: String, messageType: String, handler: @escaping (Any) -> Void) {
         let subscriptionId = "\(topic)_\(UUID().uuidString)"
         
-        let message = [
+        let message: [String: Any] = [
             "op": "subscribe",
             "id": subscriptionId,
             "topic": topic,
@@ -269,7 +271,7 @@ class ROS2WebSocketManager: ObservableObject {
     }
     
     func publish(to topic: String, message: [String: Any]) {
-        let publishMessage = [
+        let publishMessage: [String: Any] = [
             "op": "publish",
             "topic": topic,
             "msg": message
@@ -315,7 +317,7 @@ class ROS2WebSocketManager: ObservableObject {
     func callService(service: String, request: [String: Any] = [:], completion: @escaping (Result<[String: Any], Error>) -> Void) {
         let serviceId = "service_\(UUID().uuidString)"
         
-        let message = [
+        let message: [String: Any] = [
             "op": "call_service",
             "id": serviceId,
             "service": service,
@@ -333,6 +335,11 @@ class ROS2WebSocketManager: ObservableObject {
     
     private func updateConnectionState(_ state: ConnectionState) {
         connectionState = state
-        isConnected = (state == .connected)
+        switch state {
+        case .connected:
+            isConnected = true
+        default:
+            isConnected = false
+        }
     }
 }

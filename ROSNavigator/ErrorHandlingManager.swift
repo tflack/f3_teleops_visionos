@@ -134,7 +134,7 @@ class ErrorHandlingManager: ObservableObject {
                 reportError(
                     category: .system,
                     severity: .medium,
-                    message: "Recovery failed for \(error.message)",
+                    message: "Recovery failed for \(error.localizedDescription)",
                     details: error.localizedDescription
                 )
             }
