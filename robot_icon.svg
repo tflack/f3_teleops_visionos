@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="512" cy="512" r="480" fill="#1a1a1a" stroke="#333" stroke-width="8"/>
+  
+  <!-- Robot body (main chassis) -->
+  <rect x="300" y="400" width="424" height="200" rx="20" fill="#2a2a2a" stroke="#4a4a4a" stroke-width="4"/>
+  
+  <!-- Robot head/sensor unit -->
+  <rect x="350" y="300" width="324" height="120" rx="15" fill="#3a3a3a" stroke="#5a5a5a" stroke-width="3"/>
+  
+  <!-- Front wheels -->
+  <circle cx="380" cy="650" r="60" fill="#1a1a1a" stroke="#666" stroke-width="6"/>
+  <circle cx="380" cy="650" r="40" fill="#333" stroke="#888" stroke-width="2"/>
+  <circle cx="380" cy="650" r="20" fill="#555"/>
+  
+  <circle cx="644" cy="650" r="60" fill="#1a1a1a" stroke="#666" stroke-width="6"/>
+  <circle cx="644" cy="650" r="40" fill="#333" stroke="#888" stroke-width="2"/>
+  <circle cx="644" cy="650" r="20" fill="#555"/>
+  
+  <!-- Rear wheels -->
+  <circle cx="380" cy="750" r="60" fill="#1a1a1a" stroke="#666" stroke-width="6"/>
+  <circle cx="380" cy="750" r="40" fill="#333" stroke="#888" stroke-width="2"/>
+  <circle cx="380" cy="750" r="20" fill="#555"/>
+  
+  <circle cx="644" cy="750" r="60" fill="#1a1a1a" stroke="#666" stroke-width="6"/>
+  <circle cx="644" cy="750" r="40" fill="#333" stroke="#888" stroke-width="2"/>
+  <circle cx="644" cy="750" r="20" fill="#555"/>
+  
+  <!-- Sensors/LEDs on head -->
+  <circle cx="450" cy="340" r="12" fill="#00ff00"/>
+  <circle cx="512" cy="340" r="12" fill="#00ff00"/>
+  <circle cx="574" cy="340" r="12" fill="#00ff00"/>
+  
+  <!-- Camera/sensor array -->
+  <rect x="480" y="320" width="64" height="40" rx="8" fill="#1a1a1a" stroke="#666" stroke-width="2"/>
+  <circle cx="512" cy="340" r="8" fill="#0066ff"/>
+  
+  <!-- Antenna -->
+  <line x1="512" y1="300" x2="512" y2="250" stroke="#666" stroke-width="4"/>
+  <circle cx="512" cy="240" r="8" fill="#ff6600"/>
+  
+  <!-- Side details -->
+  <rect x="320" y="420" width="20" height="160" fill="#4a4a4a"/>
+  <rect x="684" y="420" width="20" height="160" fill="#4a4a4a"/>
+  
+  <!-- F3 branding -->
+  <text x="512" y="900" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#ffffff">F3</text>
+</svg>
