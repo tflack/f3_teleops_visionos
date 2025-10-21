@@ -21,7 +21,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C0B45F0B2EA831330084EE94 /* ROSNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ROSNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0B45F0B2EA831330084EE94 /* F3ROSTeleops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F3ROSTeleops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B45F0F2EA831330084EE94 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		C0B45F272EA831340084EE94 /* ROSNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ROSNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 		C0B45F0C2EA831330084EE94 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C0B45F0B2EA831330084EE94 /* ROSNavigator.app */,
+				C0B45F0B2EA831330084EE94 /* F3ROSTeleops.app */,
 				C0B45F272EA831340084EE94 /* ROSNavigatorTests.xctest */,
 			);
 			name = Products;
@@ -116,12 +116,12 @@
 			fileSystemSynchronizedGroups = (
 				C0B45F0D2EA831330084EE94 /* ROSNavigator */,
 			);
-			name = ROSNavigator;
+			name = F3ROSTeleops;
 			packageProductDependencies = (
 				C0B45F102EA831330084EE94 /* RealityKitContent */,
 			);
-			productName = ROSNavigator;
-			productReference = C0B45F0B2EA831330084EE94 /* ROSNavigator.app */;
+			productName = F3ROSTeleops;
+			productReference = C0B45F0B2EA831330084EE94 /* F3ROSTeleops.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C0B45F262EA831340084EE94 /* ROSNavigatorTests */ = {
@@ -239,13 +239,13 @@
 				DEVELOPMENT_TEAM = NX5LQ8JEJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_FILE = "ROSNavigator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = F3.ROSNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = F3.F3ROSTeleops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -268,13 +268,13 @@
 				DEVELOPMENT_TEAM = NX5LQ8JEJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				INFOPLIST_FILE = "ROSNavigator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = F3.ROSNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = F3.F3ROSTeleops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -426,7 +426,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ROSNavigator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ROSNavigator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/F3ROSTeleops.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/F3ROSTeleops";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
@@ -449,7 +449,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ROSNavigator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ROSNavigator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/F3ROSTeleops.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/F3ROSTeleops";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
