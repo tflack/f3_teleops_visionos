@@ -75,14 +75,14 @@ class PerformanceManager: ObservableObject {
     private func setupPerformanceMonitoring() {
         // Monitor performance every second
         performanceTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.updatePerformanceMetrics()
             }
         }
         
         // Monitor frame times
         frameTimeTracker?.onFrameTimeUpdate = { [weak self] frameTime in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 self?.currentMetrics.frameTime = frameTime
                 self?.currentMetrics.fps = 1000.0 / frameTime
             }

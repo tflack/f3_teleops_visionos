@@ -41,7 +41,7 @@ class VideoStreamManager: ObservableObject {
         request.timeoutInterval = 5.0
         
         URLSession.shared.dataTask(with: request) { [weak self] _, response, error in
-            Task { @MainActor in
+            Task { @MainActor [weak self] in
                 if let httpResponse = response as? HTTPURLResponse,
                    httpResponse.statusCode == 200 {
                     self?.isConnected = true
