@@ -53,28 +53,35 @@ struct SpatialTeleopView: View {
             print("🌐 SpatialTeleopView RealityView update called")
             // Update content if needed
         }
-        .overlay {
-            // Full immersive space camera feeds with no clipping constraints
-            ZStack {
-                // RGB Camera Feed - Draggable in 3D space
-                RealityKitCameraEntity(
-                    ros2Manager: ros2Manager,
-                    cameraType: .rgb,
-                    position: $rgbCameraPosition
-                )
-                .position(rgbCameraPosition)
-                
-                // Heatmap Camera Feed - Draggable in 3D space
-                RealityKitCameraEntity(
-                    ros2Manager: ros2Manager,
-                    cameraType: .heatmap,
-                    position: $heatmapCameraPosition
-                )
-                .position(heatmapCameraPosition)
+        .overlay(alignment: .topLeading) {
+            // Position cameras using absolute coordinates - no clipping
+            GeometryReader { geometry in
+                ZStack {
+                    // RGB Camera Feed - Positioned absolutely
+                    RealityKitCameraEntity(
+                        ros2Manager: ros2Manager,
+                        cameraType: .rgb,
+                        position: $rgbCameraPosition
+                    )
+                    .position(
+                        x: min(max(rgbCameraPosition.x, 160), geometry.size.width - 160),
+                        y: min(max(rgbCameraPosition.y, 100), geometry.size.height - 100)
+                    )
+                    
+                    // Heatmap Camera Feed - Positioned absolutely
+                    RealityKitCameraEntity(
+                        ros2Manager: ros2Manager,
+                        cameraType: .heatmap,
+                        position: $heatmapCameraPosition
+                    )
+                    .position(
+                        x: min(max(heatmapCameraPosition.x, 160), geometry.size.width - 160),
+                        y: min(max(heatmapCameraPosition.y, 100), geometry.size.height - 100)
+                    )
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .allowsHitTesting(true)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .allowsHitTesting(true)
-            // No clipping - allow full 3D space access
         }
         .onAppear {
             print("🌐 SpatialTeleopView onAppear called")
