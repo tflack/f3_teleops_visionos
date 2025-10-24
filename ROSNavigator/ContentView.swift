@@ -13,6 +13,10 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var showVideoTest = false
     @State private var hasSelectedRobot = false
+    
+    // Camera position state
+    @State private var rgbCameraPosition = CGPoint(x: 200, y: 300)
+    @State private var heatmapCameraPosition = CGPoint(x: 600, y: 300)
 
     var body: some View {
         if appModel.immersiveSpaceState == .closed {
@@ -70,52 +74,55 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                        Button("Change Robot") {
-                            hasSelectedRobot = false
+                        HStack(spacing: 8) {
+                            Button("Reset Cameras") {
+                                rgbCameraPosition = CGPoint(x: 200, y: 300)
+                                heatmapCameraPosition = CGPoint(x: 600, y: 300)
+                            }
+                            .font(.caption)
+                            .foregroundColor(.orange)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(.orange.opacity(0.1))
+                            .cornerRadius(8)
+                            
+                            Button("Change Robot") {
+                                hasSelectedRobot = false
+                            }
+                            .font(.caption)
+                            .foregroundColor(.blue)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(.blue.opacity(0.1))
+                            .cornerRadius(8)
                         }
-                        .font(.caption)
-                        .foregroundColor(.blue)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(.blue.opacity(0.1))
-                        .cornerRadius(8)
                     }
                     .padding(.top)
                     
-                    // Dual camera feeds side by side
-                    HStack(spacing: 16) {
-                        // RGB Camera Feed
-                        VStack(spacing: 8) {
-                            Text("RGB Camera")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(.green.opacity(0.8))
-                                .cornerRadius(8)
-                            
-                            CameraFeedView(ros2Manager: ROS2WebSocketManager.shared, selectedCamera: .constant(.rgb))
-                        }
-                        .frame(width: 300, height: 225)
-                        .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
+                    // Draggable camera feeds
+                    ZStack {
+                        // Background for camera feeds area
+                        Rectangle()
+                            .fill(.clear)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         
-                        // Heatmap Camera Feed
-                        VStack(spacing: 8) {
-                            Text("Heatmap Camera")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(.orange.opacity(0.8))
-                                .cornerRadius(8)
-                            
-                            CameraFeedView(ros2Manager: ROS2WebSocketManager.shared, selectedCamera: .constant(.heatmap))
-                        }
-                        .frame(width: 300, height: 225)
-                        .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
+                        // RGB Camera Feed - Draggable
+                        DraggableCameraFeedView(
+                            ros2Manager: ROS2WebSocketManager.shared,
+                            cameraType: .rgb,
+                            position: $rgbCameraPosition
+                        )
+                        
+                        // Heatmap Camera Feed - Draggable
+                        DraggableCameraFeedView(
+                            ros2Manager: ROS2WebSocketManager.shared,
+                            cameraType: .heatmap,
+                            position: $heatmapCameraPosition
+                        )
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.gray.opacity(0.1))
+                    .cornerRadius(12)
                     .padding(.horizontal)
                     
                     // Prominent back button
