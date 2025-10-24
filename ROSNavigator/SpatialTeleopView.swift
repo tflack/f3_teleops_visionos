@@ -75,30 +75,60 @@ struct SpatialTeleopView: View {
             .padding(.horizontal)
             .padding(.top)
             
-            // Camera feeds in a side-by-side layout
-            HStack(spacing: 20) {
-                // RGB Camera Feed
-                VStack {
-                    Text("RGB Camera")
-                        .font(.headline)
-                        .foregroundColor(.green)
+            // 2x2 Grid of views
+            VStack(spacing: 20) {
+                // Top row: RGB Camera and Heatmap Camera
+                HStack(spacing: 20) {
+                    // RGB Camera Feed
+                    VStack {
+                        Text("RGB Camera")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                        
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                            .frame(width: 400, height: 300)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                    }
                     
-                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
-                        .frame(width: 400, height: 300)
-                        .cornerRadius(12)
-                        .shadow(radius: 5)
+                    // Heatmap Camera Feed
+                    VStack {
+                        Text("Heatmap Camera")
+                            .font(.headline)
+                            .foregroundColor(.orange)
+                        
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
+                            .frame(width: 400, height: 300)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                    }
                 }
                 
-                // Heatmap Camera Feed
-                VStack {
-                    Text("Heatmap Camera")
-                        .font(.headline)
-                        .foregroundColor(.orange)
+                // Bottom row: SLAM Map and Point Cloud
+                HStack(spacing: 20) {
+                    // SLAM Map
+                    VStack {
+                        Text("SLAM Map")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                        
+                        SLAMMapView(ros2Manager: ros2Manager)
+                            .frame(width: 400, height: 300)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                    }
                     
-                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
-                        .frame(width: 400, height: 300)
-                        .cornerRadius(12)
-                        .shadow(radius: 5)
+                    // 3D Point Cloud
+                    VStack {
+                        Text("3D Point Cloud")
+                            .font(.headline)
+                            .foregroundColor(.purple)
+                        
+                        PointCloudView(ros2Manager: ros2Manager)
+                            .frame(width: 400, height: 300)
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                    }
                 }
             }
             .padding(.horizontal)
