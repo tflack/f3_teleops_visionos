@@ -34,7 +34,7 @@ struct SpatialTeleopView: View {
         VStack(spacing: 20) {
             // Header
             HStack {
-                Text("Teleoperation Control")
+                Text("\(appModel.selectedRobot.displayName) Control")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 
