@@ -53,23 +53,25 @@ struct SpatialTeleopView: View {
             print("🌐 SpatialTeleopView RealityView update called")
             // Update content if needed
         }
-        .overlay {
-            // Draggable camera feeds in immersive space
+        .overlay(alignment: .center) {
+            // Full immersive space camera feeds - no clipping
             ZStack {
                 // RGB Camera Feed - Draggable
-                ImmersiveDraggableCameraView(
+                Immersive3DCameraView(
                     ros2Manager: ros2Manager,
                     cameraType: .rgb,
                     position: $rgbCameraPosition
                 )
                 
                 // Heatmap Camera Feed - Draggable
-                ImmersiveDraggableCameraView(
+                Immersive3DCameraView(
                     ros2Manager: ros2Manager,
                     cameraType: .heatmap,
                     position: $heatmapCameraPosition
                 )
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .allowsHitTesting(true)
         }
         .onAppear {
             print("🌐 SpatialTeleopView onAppear called")
