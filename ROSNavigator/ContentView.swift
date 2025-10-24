@@ -47,6 +47,23 @@ struct ContentView: View {
             if hasSelectedRobot {
                 VStack(spacing: 16) {
                     HStack {
+                        Button(action: {
+                            hasSelectedRobot = false
+                        }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "arrow.left")
+                                Text("Back to Robot List")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(.blue)
+                            .cornerRadius(10)
+                        }
+                        
+                        Spacer()
+                        
                         Text("Camera Feeds")
                             .font(.title2)
                             .fontWeight(.bold)
@@ -100,6 +117,34 @@ struct ContentView: View {
                         .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
                     }
                     .padding(.horizontal)
+                    
+                    // Prominent back button
+                    Button(action: {
+                        hasSelectedRobot = false
+                    }) {
+                        HStack(spacing: 12) {
+                            Image(systemName: "arrow.left.circle.fill")
+                                .font(.title2)
+                            Text("Back to Robot Selection")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .padding(.horizontal, 24)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.blue, .blue.opacity(0.8)]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .cornerRadius(12)
+                        .shadow(color: .blue.opacity(0.3), radius: 8, x: 0, y: 4)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 20)
                 }
             }
             
