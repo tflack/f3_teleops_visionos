@@ -48,13 +48,21 @@ struct SLAMMapView: View {
             
             // No data message
             if mapData == nil {
-                VStack {
+                VStack(spacing: 8) {
                     Image(systemName: "map")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                     Text("Waiting for SLAM map...")
                         .foregroundColor(.white)
                         .font(.caption)
+                    Text("Topic: /map")
+                        .foregroundColor(.white.opacity(0.7))
+                        .font(.caption2)
+                    if !isConnected {
+                        Text("Not connected to robot")
+                            .foregroundColor(.red)
+                            .font(.caption2)
+                    }
                 }
             }
         }
@@ -64,8 +72,11 @@ struct SLAMMapView: View {
     }
     
     private func setupSLAMSubscriptions() {
+        print("🗺️ Setting up SLAM subscriptions...")
+        
         // Subscribe to map topic
         ros2Manager.subscribe(to: "/map", messageType: "nav_msgs/OccupancyGrid") { message in
+            print("🗺️ Received map message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in
                     parseMapData(data)
@@ -75,12 +86,15 @@ struct SLAMMapView: View {
         
         // Subscribe to TF topic for robot pose
         ros2Manager.subscribe(to: "/tf", messageType: "tf2_msgs/TFMessage") { message in
+            print("🗺️ Received TF message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in
                     parseRobotPose(data)
                 }
             }
         }
+        
+        print("🗺️ SLAM subscriptions setup complete")
     }
     
     private func parseMapData(_ data: [String: Any]) {

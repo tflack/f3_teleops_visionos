@@ -78,13 +78,21 @@ struct PointCloudView: View {
             
             // No data message
             if pointCloudData == nil {
-                VStack {
+                VStack(spacing: 8) {
                     Image(systemName: "cube.3d")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                     Text("Waiting for point cloud...")
                         .foregroundColor(.white)
                         .font(.caption)
+                    Text("Topic: /cloud_map")
+                        .foregroundColor(.white.opacity(0.7))
+                        .font(.caption2)
+                    if !isConnected {
+                        Text("Not connected to robot")
+                            .foregroundColor(.red)
+                            .font(.caption2)
+                    }
                 }
             }
         }
@@ -94,13 +102,18 @@ struct PointCloudView: View {
     }
     
     private func setupPointCloudSubscription() {
+        print("☁️ Setting up Point Cloud subscription...")
+        
         ros2Manager.subscribe(to: "/cloud_map", messageType: "sensor_msgs/PointCloud2") { message in
+            print("☁️ Received point cloud message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in
                     parsePointCloudData(data)
                 }
             }
         }
+        
+        print("☁️ Point Cloud subscription setup complete")
     }
     
     private func parsePointCloudData(_ data: [String: Any]) {
