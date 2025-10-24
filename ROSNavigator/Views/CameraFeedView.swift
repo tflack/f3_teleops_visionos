@@ -71,40 +71,11 @@ struct CameraFeedView: View {
                 }
             
             
-            // Stream status indicator
-            VStack {
-                HStack {
-                    Spacer()
-                    StreamStatusIndicator(streamManager: videoStreamManager)
-                        .padding(8)
-                }
-                Spacer()
-            }
         }
     }
     
     private func setupVideoStreams() {
         videoStreamManager.startStreams()
-    }
-}
-
-
-struct StreamStatusIndicator: View {
-    let streamManager: VideoStreamManager
-    
-    var body: some View {
-        HStack(spacing: 4) {
-            Circle()
-                .fill(streamManager.isConnected ? .green : .red)
-                .frame(width: 8, height: 8)
-            Text(streamManager.isConnected ? "LIVE" : "OFFLINE")
-                .font(.caption2)
-                .fontWeight(.medium)
-                .foregroundColor(.white)
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(.black.opacity(0.6), in: Capsule())
     }
 }
 
