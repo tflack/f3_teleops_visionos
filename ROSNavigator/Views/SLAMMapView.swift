@@ -79,7 +79,7 @@ struct SLAMMapView: View {
         print("🗺️ Setting up SLAM subscriptions...")
         
         // Subscribe to map topic
-        ros2Manager.subscribe(to: "/map", messageType: "nav_msgs/OccupancyGrid") { message in
+        ros2Manager.subscribe(to: "/map", messageType: "nav_msgs/msg/OccupancyGrid") { message in
             print("🗺️ Received map message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in
@@ -89,7 +89,7 @@ struct SLAMMapView: View {
         }
         
         // Subscribe to TF topic for robot pose
-        ros2Manager.subscribe(to: "/tf", messageType: "tf2_msgs/TFMessage") { message in
+        ros2Manager.subscribe(to: "/tf", messageType: "tf2_msgs/msg/TFMessage") { message in
             print("🗺️ Received TF message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in

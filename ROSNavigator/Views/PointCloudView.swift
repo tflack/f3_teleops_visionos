@@ -108,7 +108,7 @@ struct PointCloudView: View {
     private func setupPointCloudSubscription() {
         print("☁️ Setting up Point Cloud subscription...")
         
-        ros2Manager.subscribe(to: "/cloud_map", messageType: "sensor_msgs/PointCloud2") { message in
+        ros2Manager.subscribe(to: "/cloud_map", messageType: "sensor_msgs/msg/PointCloud2") { message in
             print("☁️ Received point cloud message: \(message)")
             if let data = message as? [String: Any] {
                 Task { @MainActor in
