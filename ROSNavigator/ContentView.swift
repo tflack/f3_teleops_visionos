@@ -22,32 +22,48 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .padding(.top)
             
-            Text("Select a robot to connect")
+            Text(hasSelectedRobot ? "Selected: \(appModel.selectedRobot.displayName)" : "Select a robot to connect")
                 .font(.headline)
                 .foregroundColor(.secondary)
             
-            // Robot selection list
-            VStack(spacing: 12) {
-                ForEach(AppModel.Robot.allCases) { robot in
-                    RobotSelectionCard(
-                        robot: robot,
-                        isSelected: appModel.selectedRobot.id == robot.id,
-                        onSelect: {
-                            appModel.selectedRobot = robot
-                            hasSelectedRobot = true
-                        }
-                    )
+            // Robot selection list - only show if no robot selected
+            if !hasSelectedRobot {
+                VStack(spacing: 12) {
+                    ForEach(AppModel.Robot.allCases) { robot in
+                        RobotSelectionCard(
+                            robot: robot,
+                            isSelected: appModel.selectedRobot.id == robot.id,
+                            onSelect: {
+                                appModel.selectedRobot = robot
+                                hasSelectedRobot = true
+                            }
+                        )
+                    }
                 }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
             
             // Show camera streams when a robot is selected
             if hasSelectedRobot {
                 VStack(spacing: 16) {
-                    Text("Camera Feeds")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .padding(.top)
+                    HStack {
+                        Text("Camera Feeds")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        Button("Change Robot") {
+                            hasSelectedRobot = false
+                        }
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(.blue.opacity(0.1))
+                        .cornerRadius(8)
+                    }
+                    .padding(.top)
                     
                     // Dual camera feeds side by side
                     HStack(spacing: 16) {

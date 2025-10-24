@@ -87,28 +87,28 @@ class AppModel {
             id: 1,
             name: "F3 Rover Alpha",
             ipAddress: "192.168.1.49",
-            cameras: ["RGB Camera", "Heat Map", "IR Camera"]
+            cameras: ["RGB Camera", "Heat Map", "IR Camera", "Depth Camera"]
         )
         
         static let beta = Robot(
             id: 2,
             name: "F3 Rover Beta",
             ipAddress: "192.168.1.73",
-            cameras: ["RGB Camera", "Depth Cam"]
+            cameras: ["RGB Camera", "Depth Camera", "Thermal Camera"]
         )
         
         static let gamma = Robot(
             id: 3,
             name: "F3 Rover Gamma",
             ipAddress: "192.168.1.92",
-            cameras: ["RGB Camera", "IR Camera"]
+            cameras: ["RGB Camera", "IR Camera", "Stereo Camera"]
         )
         
         static let delta = Robot(
             id: 4,
             name: "F3 Rover Delta",
             ipAddress: "192.168.1.58",
-            cameras: []
+            cameras: ["RGB Camera", "Depth Camera", "LIDAR"]
         )
         
         static var allCases: [Robot] = [.alpha, .beta, .gamma, .delta]
