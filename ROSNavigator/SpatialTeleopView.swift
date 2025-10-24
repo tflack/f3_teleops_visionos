@@ -21,6 +21,10 @@ struct SpatialTeleopView: View {
     @State private var nativeROS2Bridge: ROS2NativeBridge?
     @State private var cancellables = Set<AnyCancellable>()
     
+    // Camera position state for immersive space
+    @State private var rgbCameraPosition = CGPoint(x: 200, y: 200)
+    @State private var heatmapCameraPosition = CGPoint(x: 600, y: 200)
+    
     init() {
         print("🌐 SpatialTeleopView init called")
         // Use singleton instance and update IP if needed
@@ -49,60 +53,22 @@ struct SpatialTeleopView: View {
             print("🌐 SpatialTeleopView RealityView update called")
             // Update content if needed
         }
-        .overlay(alignment: .topTrailing) {
-            // Dual camera feeds positioned to match content view window position
-            HStack(spacing: 16) {
-                // RGB Camera Feed with Object Detection
-                ZStack {
-                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
-                        .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
-                        .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
-                    
-                    
-                    // Online status overlay
-                    VStack {
-                        HStack {
-                            Spacer()
-                            HStack(spacing: 4) {
-                                Circle()
-                                    .fill(.green)
-                                    .frame(width: 8, height: 8)
-                                Text("LIVE")
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                            }
-                            .padding(8)
-                            .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
-                            .padding(8)
-                        }
-                        Spacer()
-                    }
-                }
+        .overlay {
+            // Draggable camera feeds in immersive space
+            ZStack {
+                // RGB Camera Feed - Draggable
+                ImmersiveDraggableCameraView(
+                    ros2Manager: ros2Manager,
+                    cameraType: .rgb,
+                    position: $rgbCameraPosition
+                )
                 
-                // Heatmap Camera Feed
-                CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
-                    .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
-                    .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
-                    .overlay(alignment: .topTrailing) {
-                        // Online status overlay
-                        HStack(spacing: 4) {
-                            Circle()
-                                .fill(.green)
-                                .frame(width: 8, height: 8)
-                            Text("LIVE")
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        .padding(8)
-                        .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
-                        .padding(8)
-                    }
-            }
-            .padding(20)
-            .onAppear {
-                print("🌐 Dual camera feeds overlay positioned to match content view!")
+                // Heatmap Camera Feed - Draggable
+                ImmersiveDraggableCameraView(
+                    ros2Manager: ros2Manager,
+                    cameraType: .heatmap,
+                    position: $heatmapCameraPosition
+                )
             }
         }
         .onAppear {
