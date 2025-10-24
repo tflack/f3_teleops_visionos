@@ -76,9 +76,9 @@ struct RealityKitCameraEntity: View {
             y: isDragging ? 8 : 4
         )
         .scaleEffect(isDragging ? 1.05 : 1.0)
-        .position(
-            x: position.x + dragOffset.width,
-            y: position.y + dragOffset.height
+        .offset(
+            x: dragOffset.width,
+            y: dragOffset.height
         )
         .gesture(
             DragGesture()
