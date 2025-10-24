@@ -19,13 +19,16 @@ struct SpatialTeleopView: View {
     @State private var nativeROS2Bridge: ROS2NativeBridge?
     @State private var cancellables = Set<AnyCancellable>()
     
+    let onExit: (() -> Void)?
     
-    init() {
+    init(onExit: (() -> Void)? = nil) {
+        self.onExit = onExit
         print("🌐 SpatialTeleopView init called")
         // Use singleton instance and update IP if needed
         _ros2Manager = State(initialValue: ROS2WebSocketManager.shared)
         ros2Manager.updateServerIP(AppModel.Robot.alpha.ipAddress)
     }
+    
     
     var body: some View {
         VStack(spacing: 20) {
@@ -45,6 +48,22 @@ struct SpatialTeleopView: View {
                     Text(ros2Manager.isConnected ? "Connected" : "Disconnected")
                         .font(.caption)
                         .foregroundColor(.secondary)
+                }
+                
+                // Exit button
+                Button(action: {
+                    onExit?()
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "xmark.circle.fill")
+                        Text("Exit")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color.red)
+                    .cornerRadius(8)
                 }
             }
             .padding(.horizontal)

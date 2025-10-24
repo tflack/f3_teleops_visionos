@@ -11,12 +11,19 @@ struct ContentView: View {
     @Environment(AppModel.self) private var appModel
     @State private var showVideoTest = false
     @State private var hasSelectedRobot = false
+    @State private var isTeleoperationActive = false
     
     // Camera position state
     @State private var rgbCameraPosition = CGPoint(x: 200, y: 300)
     @State private var heatmapCameraPosition = CGPoint(x: 600, y: 300)
 
     var body: some View {
+        if isTeleoperationActive {
+            // Show teleoperation view with camera feeds
+            SpatialTeleopView(onExit: {
+                isTeleoperationActive = false
+            })
+        } else {
             VStack(spacing: 20) {
             Text("ROSNavigator")
                 .font(.largeTitle)
@@ -180,6 +187,7 @@ struct ContentView: View {
                         Button {
                             // Start teleoperation with selected robot
                             print("🤖 Starting teleoperation with \(appModel.selectedRobot.displayName)")
+                            isTeleoperationActive = true
                         } label: {
                             HStack {
                                 Image(systemName: "play.circle.fill")
@@ -199,13 +207,14 @@ struct ContentView: View {
                         )
                         .padding(.horizontal)
                         .padding(.bottom)
-        }
-        .onAppear {
-            // Start checking robot connections asynchronously
-            appModel.checkRobotConnections()
-        }
-        .sheet(isPresented: $showVideoTest) {
-            SimpleMJPEGTestView()
+            }
+            .onAppear {
+                // Start checking robot connections asynchronously
+                appModel.checkRobotConnections()
+            }
+            .sheet(isPresented: $showVideoTest) {
+                SimpleMJPEGTestView()
+            }
         }
     }
 }
