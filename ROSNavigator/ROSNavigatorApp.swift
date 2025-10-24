@@ -12,25 +12,27 @@ struct ROSNavigatorApp: App {
 
     @State private var appModel = AppModel()
     @State private var avPlayerViewModel = AVPlayerViewModel()
+    
 
     var body: some Scene {
         WindowGroup {
-            if avPlayerViewModel.isPlaying {
-                AVPlayerView(viewModel: avPlayerViewModel)
-            } else {
-                ContentView()
-                    .environment(appModel)
-            }
+            ContentView()
+                .environment(appModel)
         }
+        .windowResizability(.contentSize)
+        .defaultSize(width: 800, height: 600)
+        .windowStyle(.plain)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             SpatialTeleopView()
                 .environment(appModel)
                 .onAppear {
+                    print("🌐 ImmersiveSpace onAppear triggered!")
                     appModel.immersiveSpaceState = .open
                     avPlayerViewModel.play()
                 }
                 .onDisappear {
+                    print("🌐 ImmersiveSpace onDisappear triggered!")
                     appModel.immersiveSpaceState = .closed
                     avPlayerViewModel.reset()
                 }

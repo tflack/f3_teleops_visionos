@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Network
 
 /// Maintains app-wide state
 @MainActor
@@ -44,6 +45,9 @@ class AppModel {
     var safetyOverride: Bool = false
     var obstacleWarning: Bool = false
     
+    // MARK: - Robot Connection Status
+    var robotConnectionStatuses: [Int: Robot.ConnectionStatus] = [:]
+    
     // MARK: - Stream Health
     var streamHealth: String = "Degraded"
     var cameraCount: Int = 0
@@ -57,6 +61,26 @@ class AppModel {
         
         var displayName: String {
             return name
+        }
+        
+        enum ConnectionStatus: String, CaseIterable {
+            case online = "online"
+            case offline = "offline"
+            case unknown = "unknown"
+            case checking = "checking"
+            
+            var color: Color {
+                switch self {
+                case .online:
+                    return .green
+                case .offline:
+                    return .red
+                case .unknown:
+                    return .gray
+                case .checking:
+                    return .orange
+                }
+            }
         }
         
         static let alpha = Robot(
@@ -92,21 +116,29 @@ class AppModel {
     
     // MARK: - Methods
     func updateROS2ConnectionState(_ state: ROS2WebSocketManager.ConnectionState) {
+        let previousState = ros2ConnectionState
         ros2ConnectionState = state
+        
+        print("🔄 AppModel ROS2 connection state changed: \(previousState) -> \(state)")
+        
         switch state {
         case .connected:
             isROS2Connected = true
+            print("✅ ROS2 connected successfully")
         default:
             isROS2Connected = false
+            print("❌ ROS2 disconnected or error")
         }
         
         // Update robot status based on connection
         if isROS2Connected {
             robotStatus = .online
             streamHealth = "Nominal"
+            print("🤖 Robot status updated to: ONLINE")
         } else {
             robotStatus = .offline
             streamHealth = "Degraded"
+            print("🤖 Robot status updated to: OFFLINE")
         }
     }
     
@@ -140,5 +172,98 @@ class AppModel {
     
     func setObstacleWarning(_ enabled: Bool) {
         obstacleWarning = enabled
+    }
+    
+    // MARK: - Connection Checking
+    
+    func checkRobotConnections() {
+        print("🔍 Starting connection checks for \(Robot.allCases.count) robots")
+        for robot in Robot.allCases {
+            print("🔍 Checking connection for \(robot.name) at \(robot.ipAddress)")
+            Task {
+                await checkRobotConnection(robot)
+            }
+        }
+    }
+    
+    private func checkRobotConnection(_ robot: Robot) async {
+        print("🔍 Starting connection check for \(robot.name) at \(robot.ipAddress)")
+        
+        // Update status to checking
+        updateRobotConnectionStatus(robot.id, status: .checking)
+        
+        // Perform async connection check
+        let isOnline = await performConnectionCheck(ipAddress: robot.ipAddress)
+        
+        // Update status based on result
+        let status: Robot.ConnectionStatus = isOnline ? .online : .offline
+        updateRobotConnectionStatus(robot.id, status: status)
+        
+        print("🔍 Connection check completed for \(robot.name): \(status.rawValue)")
+    }
+    
+    private func updateRobotConnectionStatus(_ robotId: Int, status: Robot.ConnectionStatus) {
+        robotConnectionStatuses[robotId] = status
+    }
+    
+    func getRobotConnectionStatus(_ robotId: Int) -> Robot.ConnectionStatus {
+        return robotConnectionStatuses[robotId] ?? .unknown
+    }
+    
+    private func performConnectionCheck(ipAddress: String) async -> Bool {
+        print("🔍 Performing connection check to \(ipAddress):9090")
+        return await withCheckedContinuation { continuation in
+            let monitor = NWPathMonitor()
+            let queue = DispatchQueue(label: "ConnectionCheck")
+            var hasResumed = false
+            
+            let resumeOnce: (Bool) -> Void = { result in
+                if !hasResumed {
+                    hasResumed = true
+                    print("🔍 Connection check result for \(ipAddress): \(result ? "ONLINE" : "OFFLINE")")
+                    continuation.resume(returning: result)
+                }
+            }
+            
+            monitor.pathUpdateHandler = { path in
+                if path.status == .satisfied {
+                    // Network is available, now check if we can reach the specific IP
+                    let connection = NWConnection(
+                        host: NWEndpoint.Host(ipAddress),
+                        port: NWEndpoint.Port(integerLiteral: 9090), // ROS2 WebSocket port
+                        using: .tcp
+                    )
+                    
+                    connection.stateUpdateHandler = { state in
+                        switch state {
+                        case .ready:
+                            connection.cancel()
+                            monitor.cancel()
+                            resumeOnce(true)
+                        case .failed(_), .cancelled:
+                            connection.cancel()
+                            monitor.cancel()
+                            resumeOnce(false)
+                        default:
+                            break
+                        }
+                    }
+                    
+                    connection.start(queue: queue)
+                    
+                    // Timeout after 3 seconds
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        connection.cancel()
+                        monitor.cancel()
+                        resumeOnce(false)
+                    }
+                } else {
+                    monitor.cancel()
+                    resumeOnce(false)
+                }
+            }
+            
+            monitor.start(queue: queue)
+        }
     }
 }

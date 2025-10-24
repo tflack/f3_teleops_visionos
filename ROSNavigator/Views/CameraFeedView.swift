@@ -7,18 +7,68 @@
 
 import SwiftUI
 import AVFoundation
+import AVKit
 
 struct CameraFeedView: View {
     let ros2Manager: ROS2WebSocketManager
-    @State private var videoStreamManager = VideoStreamManager()
+    @State private var videoStreamManager: VideoStreamManager
     @State private var detectedObjects: [DetectedObjectInfo] = []
+    @Binding var selectedCamera: VideoStreamManager.CameraType
+    
+    init(ros2Manager: ROS2WebSocketManager, selectedCamera: Binding<VideoStreamManager.CameraType> = .constant(.rgb)) {
+        self.ros2Manager = ros2Manager
+        self._selectedCamera = selectedCamera
+        // Extract IP from ros2Manager's serverIP
+        let serverIP = ros2Manager.serverIP
+        let streamManager = VideoStreamManager(serverIP: serverIP)
+        // Start streams immediately to ensure URLs are available
+        streamManager.startStreams()
+        self._videoStreamManager = State(initialValue: streamManager)
+    }
     
     var body: some View {
         ZStack {
-            // Main camera feed
-            VideoPlayerView(streamURL: videoStreamManager.rgbStreamURL)
+            // Main camera feed using MJPEG approach (like f3_teleops)
+            if let streamURL = videoStreamManager.getStreamURL(for: selectedCamera) {
+                SimpleMJPEGView(
+                    streamURL: streamURL,
+                    isLoading: .constant(false),
+                    hasError: .constant(false),
+                    errorMessage: .constant("")
+                )
                 .aspectRatio(16/9, contentMode: .fit)
                 .clipped()
+                .onAppear {
+                    print("📹 CameraFeedView appeared!")
+                    print("📹 Using MJPEG approach like f3_teleops: \(streamURL.absoluteString)")
+                }
+            } else {
+                // Fallback if no stream URL available - make this more visible for debugging
+                Rectangle()
+                    .fill(Color.red.opacity(0.8))
+                    .aspectRatio(16/9, contentMode: .fit)
+                    .overlay(
+                        VStack {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.largeTitle)
+                                .foregroundColor(.white)
+                            Text("No stream URL available")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                            Text("Camera: \(selectedCamera)")
+                                .foregroundColor(.white)
+                            Text("Server IP: \(ros2Manager.serverIP)")
+                                .foregroundColor(.white)
+                                .font(.caption)
+                        }
+                    )
+                    .onAppear {
+                        print("📹 CameraFeedView fallback appeared - no stream URL!")
+                        print("📹 Selected camera: \(selectedCamera)")
+                        print("📹 Server IP: \(ros2Manager.serverIP)")
+                        print("📹 VideoStreamManager connected: \(videoStreamManager.isConnected)")
+                    }
+            }
             
             // Object detection overlay
             if !detectedObjects.isEmpty {
@@ -40,7 +90,6 @@ struct CameraFeedView: View {
             }
         }
         .onAppear {
-            setupVideoStreams()
             setupObjectDetection()
         }
     }
@@ -94,47 +143,6 @@ struct CameraFeedView: View {
     }
 }
 
-struct VideoPlayerView: View {
-    let streamURL: URL?
-    
-    var body: some View {
-        Group {
-            if let url = streamURL {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    Rectangle()
-                        .fill(.black)
-                        .overlay {
-                            VStack {
-                                Image(systemName: "video.slash")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.white)
-                                Text("Loading camera feed...")
-                                    .foregroundColor(.white)
-                                    .font(.caption)
-                            }
-                        }
-                }
-            } else {
-                Rectangle()
-                    .fill(.black)
-                    .overlay {
-                        VStack {
-                            Image(systemName: "video.slash")
-                                .font(.largeTitle)
-                                .foregroundColor(.white)
-                            Text("No camera feed available")
-                                .foregroundColor(.white)
-                                .font(.caption)
-                        }
-                    }
-            }
-        }
-    }
-}
 
 struct StreamStatusIndicator: View {
     let streamManager: VideoStreamManager

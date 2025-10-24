@@ -27,12 +27,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C0B45F2D2EA831340084EE94 /* Exceptions for "ROSNavigator" folder in "ROSNavigator" target */ = {
+		C0B45F2D2EA831340084EE94 /* Exceptions for "ROSNavigator" folder in "F3ROSTeleops" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = C0B45F0A2EA831330084EE94 /* ROSNavigator */;
+			target = C0B45F0A2EA831330084EE94 /* F3ROSTeleops */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -40,7 +40,7 @@
 		C0B45F0D2EA831330084EE94 /* ROSNavigator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				C0B45F2D2EA831340084EE94 /* Exceptions for "ROSNavigator" folder in "ROSNavigator" target */,
+				C0B45F2D2EA831340084EE94 /* Exceptions for "ROSNavigator" folder in "F3ROSTeleops" target */,
 			);
 			path = ROSNavigator;
 			sourceTree = "<group>";
@@ -101,9 +101,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C0B45F0A2EA831330084EE94 /* ROSNavigator */ = {
+		C0B45F0A2EA831330084EE94 /* F3ROSTeleops */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0B45F2E2EA831340084EE94 /* Build configuration list for PBXNativeTarget "ROSNavigator" */;
+			buildConfigurationList = C0B45F2E2EA831340084EE94 /* Build configuration list for PBXNativeTarget "F3ROSTeleops" */;
 			buildPhases = (
 				C0B45F072EA831330084EE94 /* Sources */,
 				C0B45F082EA831330084EE94 /* Frameworks */,
@@ -180,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0B45F0A2EA831330084EE94 /* ROSNavigator */,
+				C0B45F0A2EA831330084EE94 /* F3ROSTeleops */,
 				C0B45F262EA831340084EE94 /* ROSNavigatorTests */,
 			);
 		};
@@ -223,7 +223,7 @@
 /* Begin PBXTargetDependency section */
 		C0B45F292EA831340084EE94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C0B45F0A2EA831330084EE94 /* ROSNavigator */;
+			target = C0B45F0A2EA831330084EE94 /* F3ROSTeleops */;
 			targetProxy = C0B45F282EA831340084EE94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -239,7 +239,7 @@
 				DEVELOPMENT_TEAM = NX5LQ8JEJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ROSNavigator/Info.plist";
+				INFOPLIST_FILE = ROSNavigator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -268,7 +268,7 @@
 				DEVELOPMENT_TEAM = NX5LQ8JEJ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "ROSNavigator/Info.plist";
+				INFOPLIST_FILE = ROSNavigator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +466,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0B45F2E2EA831340084EE94 /* Build configuration list for PBXNativeTarget "ROSNavigator" */ = {
+		C0B45F2E2EA831340084EE94 /* Build configuration list for PBXNativeTarget "F3ROSTeleops" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0B45F2F2EA831340084EE94 /* Debug */,

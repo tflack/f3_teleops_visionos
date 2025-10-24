@@ -11,9 +11,11 @@ import RealityKit
 struct ContentView: View {
     @Environment(AppModel.self) private var appModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
+    @State private var showVideoTest = false
 
     var body: some View {
-        VStack(spacing: 20) {
+        if appModel.immersiveSpaceState == .closed {
+            VStack(spacing: 20) {
             Text("ROSNavigator")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -37,9 +39,77 @@ struct ContentView: View {
             }
             .padding(.horizontal)
             
-            Spacer()
+            // Show camera streams when a robot is selected
+            if true { // Always show for now to test
+                VStack(spacing: 16) {
+                    Text("Camera Feeds")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .padding(.top)
+                    
+                    // Dual camera feeds side by side
+                    HStack(spacing: 16) {
+                        // RGB Camera Feed
+                        VStack(spacing: 8) {
+                            Text("RGB Camera")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(.green.opacity(0.8))
+                                .cornerRadius(8)
+                            
+                            CameraFeedView(ros2Manager: ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress), selectedCamera: .constant(.rgb))
+                        }
+                        .frame(width: 300, height: 225)
+                        .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
+                        
+                        // Heatmap Camera Feed
+                        VStack(spacing: 8) {
+                            Text("Heatmap Camera")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 6)
+                                .background(.orange.opacity(0.8))
+                                .cornerRadius(8)
+                            
+                            CameraFeedView(ros2Manager: ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress), selectedCamera: .constant(.heatmap))
+                        }
+                        .frame(width: 300, height: 225)
+                        .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
+                    }
+                    .padding(.horizontal)
+                }
+            }
             
-            // Connect button
+                        Spacer()
+
+                        // Test button
+                        Button {
+                            showVideoTest = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "wrench.and.screwdriver")
+                                Text("Test Video Stream")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 24)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.orange)
+                                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                        )
+                        .padding(.horizontal)
+
+                        // Connect button
             Button {
                 Task { @MainActor in
                     appModel.immersiveSpaceState = .inTransition
@@ -73,6 +143,26 @@ struct ContentView: View {
             .padding(.horizontal)
             .padding(.bottom)
         }
+                    .onAppear {
+                        // Start checking robot connections asynchronously
+                        appModel.checkRobotConnections()
+                    }
+                    .sheet(isPresented: $showVideoTest) {
+                        SimpleMJPEGTestView()
+                    }
+        } else {
+            // Show minimal view when immersive space is open
+            VStack {
+                Text("Immersive View Active")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                Text("Camera feeds and controls are now in the immersive space")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding()
+        }
     }
 }
 
@@ -80,6 +170,7 @@ struct RobotSelectionCard: View {
     let robot: AppModel.Robot
     let isSelected: Bool
     let onSelect: () -> Void
+    @Environment(AppModel.self) private var appModel
     
     var body: some View {
         Button(action: onSelect) {
@@ -99,9 +190,16 @@ struct RobotSelectionCard: View {
                     )
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(robot.displayName)
-                        .font(.headline)
-                        .foregroundColor(.primary)
+                    HStack {
+                        Text(robot.displayName)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        
+                        // Connection status indicator
+                        Circle()
+                            .fill(connectionStatusColor)
+                            .frame(width: 8, height: 8)
+                    }
                     
                     Text("IP: \(robot.ipAddress)")
                         .font(.subheadline)
@@ -137,6 +235,11 @@ struct RobotSelectionCard: View {
             )
         }
         .buttonStyle(PlainButtonStyle())
+    }
+    
+    private var connectionStatusColor: Color {
+        let status = appModel.getRobotConnectionStatus(robot.id)
+        return status.color
     }
 }
 

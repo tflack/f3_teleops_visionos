@@ -45,7 +45,7 @@ struct StatusPanelView: View {
             
             // Robot status
             HStack {
-                Image(systemName: "robot")
+                Image(systemName: "cpu")
                     .foregroundColor(robotStatusColor)
                 Text("\(appModel.selectedRobot.name)")
                     .font(.caption)

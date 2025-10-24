@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import Combine
+import RealityKitContent
 
 struct SpatialTeleopView: View {
     @Environment(AppModel.self) var appModel
@@ -21,82 +22,82 @@ struct SpatialTeleopView: View {
     @State private var cancellables = Set<AnyCancellable>()
     
     init() {
+        print("🌐 SpatialTeleopView init called")
         // Initialize with default robot, will be updated in onAppear
         _ros2Manager = State(initialValue: ROS2WebSocketManager(serverIP: AppModel.Robot.alpha.ipAddress))
     }
     
     var body: some View {
         RealityView { content in
+            print("🌐 SpatialTeleopView RealityView setup started")
             // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Immersive", in: Bundle.main) {
+            do {
+                // Try to load from RealityKitContent bundle using the proper module bundle
+                let immersiveContentEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
+                print("🌐 Successfully loaded immersive content entity from RealityKitContent bundle")
                 content.add(immersiveContentEntity)
+            } catch {
+                print("🌐 Failed to load immersive content entity: \(error)")
+                // Create a simple fallback entity
+                let fallbackEntity = Entity()
+                fallbackEntity.name = "FallbackContent"
+                print("🌐 Created fallback entity")
+                content.add(fallbackEntity)
             }
         } update: { content in
+            print("🌐 SpatialTeleopView RealityView update called")
             // Update content if needed
         }
-        .overlay(alignment: .bottom) {
-            // Main control panel at bottom
-            ControlPanelView(
-                ros2Manager: ros2Manager,
-                gamepadManager: gamepadManager,
-                inputCoordinator: inputCoordinator,
-                robotControlManager: robotControlManager
-            )
-                .frame(maxWidth: 600, maxHeight: 200)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 16))
-                .padding()
-        }
-        .overlay(alignment: .topLeading) {
-            // Status panel at top left
-            StatusPanelView()
-                .frame(maxWidth: 300, maxHeight: 150)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
-                .padding()
-        }
         .overlay(alignment: .topTrailing) {
-            // Alerts panel at top right
-            AlertsPanelView()
-                .frame(maxWidth: 250, maxHeight: 100)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
-                .padding()
-        }
-        .overlay(alignment: .center) {
-            // Main camera feed in center
-            CameraFeedView(ros2Manager: ros2Manager)
-                .frame(width: 640, height: 360)
-                .background(.black, in: RoundedRectangle(cornerRadius: 8))
-        }
-        .overlay(alignment: .leading) {
-            // LIDAR and SLAM visualizations on left
-            VStack(spacing: 16) {
-                LidarVisualizationView(ros2Manager: ros2Manager)
-                    .frame(width: 300, height: 300)
-                    .background(.black, in: RoundedRectangle(cornerRadius: 8))
+            // Dual camera feeds positioned to match content view window position
+            HStack(spacing: 16) {
+                // RGB Camera Feed
+                CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                    .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
+                    .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
+                    .overlay(alignment: .topTrailing) {
+                        // Online status overlay
+                        HStack(spacing: 4) {
+                            Circle()
+                                .fill(.green)
+                                .frame(width: 8, height: 8)
+                            Text("LIVE")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        }
+                        .padding(8)
+                        .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
+                        .padding(8)
+                    }
                 
-                SLAMMapView(ros2Manager: ros2Manager)
-                    .frame(width: 300, height: 200)
-                    .background(.black, in: RoundedRectangle(cornerRadius: 8))
+                // Heatmap Camera Feed
+                CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
+                    .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
+                    .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
+                    .overlay(alignment: .topTrailing) {
+                        // Online status overlay
+                        HStack(spacing: 4) {
+                            Circle()
+                                .fill(.green)
+                                .frame(width: 8, height: 8)
+                            Text("LIVE")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        }
+                        .padding(8)
+                        .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
+                        .padding(8)
+                    }
             }
-            .padding()
-        }
-        .overlay(alignment: .trailing) {
-            // Point cloud viewer on right
-            PointCloudView(ros2Manager: ros2Manager)
-                .frame(width: 400, height: 400)
-                .background(.black, in: RoundedRectangle(cornerRadius: 8))
-                .padding()
-        }
-        .overlay(alignment: .bottomTrailing) {
-            // Debug console
-            DebugConsoleView(
-                ros2Manager: ros2Manager,
-                gamepadManager: gamepadManager
-            )
-            .frame(maxWidth: 400, maxHeight: 300)
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 12))
-            .padding()
+            .padding(20)
+            .onAppear {
+                print("🌐 Dual camera feeds overlay positioned to match content view!")
+            }
         }
         .onAppear {
+            print("🌐 SpatialTeleopView onAppear called")
             setupROS2Connection()
             setupManagers()
         }
@@ -148,15 +149,20 @@ struct SpatialTeleopView: View {
     }
     
     private func setupROS2Connection() {
+        print("🔌 Setting up ROS2 connection for robot: \(appModel.selectedRobot.name)")
+        print("🔌 Robot IP: \(appModel.selectedRobot.ipAddress)")
+        
         // Reinitialize ROS2WebSocketManager with selected robot's IP
         ros2Manager = ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress)
         
         // Connect to ROS2 WebSocket
+        print("🔌 Initiating WebSocket connection...")
         ros2Manager.connect()
         
         // Subscribe to connection state changes
         Task {
             for await state in ros2Manager.$connectionState.values {
+                print("🔌 ROS2 connection state changed: \(state)")
                 appModel.updateROS2ConnectionState(state)
             }
         }

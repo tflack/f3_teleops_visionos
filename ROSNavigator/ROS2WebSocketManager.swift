@@ -30,7 +30,7 @@ public class ROS2WebSocketManager: ObservableObject {
     private var subscriptions: [String: String] = [:] // topic -> subscription ID
     private var messageHandlers: [String: (Any) -> Void] = [:]
     
-    private let serverIP: String
+    let serverIP: String
     private let serverPort: Int
     private let reconnectInterval: TimeInterval = 5.0
     private let heartbeatInterval: TimeInterval = 30.0
@@ -54,24 +54,57 @@ public class ROS2WebSocketManager: ObservableObject {
     // MARK: - Connection Management
     
     func connect() {
-        guard case .disconnected = connectionState else { return }
+        guard case .disconnected = connectionState else { 
+            print("🔌 WebSocket already connected or connecting, current state: \(connectionState)")
+            return 
+        }
         
-        connectionState = .connecting
+        print("🔌 Starting WebSocket connection to \(serverIP):\(serverPort)")
+        updateConnectionState(.connecting)
         lastError = nil
+        
+        // Test basic connectivity first
+        testBasicConnectivity()
         
         let urlString = "ws://\(serverIP):\(serverPort)"
         guard let url = URL(string: urlString) else {
-            connectionState = .error("Invalid URL: \(urlString)")
+            let errorMsg = "Invalid URL: \(urlString)"
+            print("❌ WebSocket connection failed: \(errorMsg)")
+            updateConnectionState(.error(errorMsg))
             return
         }
         
+        print("🔌 Creating WebSocket task for URL: \(urlString)")
         webSocketTask = urlSession.webSocketTask(with: url)
+        
+        // Add connection state monitoring
         webSocketTask?.resume()
+        
+        // Monitor connection state with more detailed timing
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            if let self = self, case .connecting = self.connectionState {
+                print("🔌 WebSocket connection still in progress after 0.5 seconds")
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+            if let self = self, case .connecting = self.connectionState {
+                print("🔌 WebSocket connection still in progress after 1 second")
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            if let self = self, case .connecting = self.connectionState {
+                print("🔌 WebSocket connection still in progress after 2 seconds - this may indicate a connection issue")
+                // Force a connection test
+                self.testWebSocketConnection()
+            }
+        }
         
         startReceiving()
         startHeartbeat()
         
-        print("🔌 Connecting to ROS2 WebSocket at \(urlString)")
+        print("🔌 WebSocket connection initiated to \(urlString)")
     }
     
     func disconnect() {
@@ -81,14 +114,14 @@ public class ROS2WebSocketManager: ObservableObject {
         webSocketTask?.cancel(with: .goingAway, reason: nil)
         webSocketTask = nil
         
-        connectionState = .disconnected
-        isConnected = false
+        updateConnectionState(.disconnected)
         subscriptions.removeAll()
         
         print("🔌 Disconnected from ROS2 WebSocket")
     }
     
     private func startReceiving() {
+        print("🔌 Starting to receive WebSocket messages...")
         webSocketTask?.receive { [weak self] result in
             Task { @MainActor [weak self] in
                 self?.handleReceiveResult(result)
@@ -99,10 +132,19 @@ public class ROS2WebSocketManager: ObservableObject {
     private func handleReceiveResult(_ result: Result<URLSessionWebSocketTask.Message, Error>) {
         switch result {
         case .success(let message):
+            print("📨 WebSocket message received successfully")
+            
+            // If we were in connecting state and received a message, we're now connected
+            if case .connecting = connectionState {
+                print("✅ First message received - WebSocket connection established!")
+                updateConnectionState(.connected)
+            }
+            
             handleMessage(message)
             startReceiving() // Continue receiving
         case .failure(let error):
-            print("❌ WebSocket receive error: \(error)")
+            print("❌ WebSocket receive error: \(error.localizedDescription)")
+            print("❌ Error details: \(error)")
             handleConnectionError(error)
         }
     }
@@ -137,6 +179,12 @@ public class ROS2WebSocketManager: ObservableObject {
     private func handleJSONMessage(_ json: [String: Any]?) {
         guard let json = json else { return }
         
+        // If we received any message and were in connecting state, we're now connected
+        if case .connecting = connectionState {
+            print("✅ Received message from rosbridge - connection established!")
+            updateConnectionState(.connected)
+        }
+        
         // Handle different message types
         if let op = json["op"] as? String {
             switch op {
@@ -164,7 +212,16 @@ public class ROS2WebSocketManager: ObservableObject {
     
     private func handleServiceResponse(_ json: [String: Any]) {
         // Handle service responses
-        print("🔔 Service response: \(json)")
+        if let service = json["service"] as? String {
+            print("🔔 Service response from \(service): \(json)")
+            
+            // If this is our connection test service call, we know rosbridge is working
+            if service == "/rosapi/topics" {
+                print("✅ Rosbridge service call successful - connection is working!")
+            }
+        } else {
+            print("🔔 Service response: \(json)")
+        }
     }
     
     private func handleStatusMessage(_ json: [String: Any]) {
@@ -174,10 +231,11 @@ public class ROS2WebSocketManager: ObservableObject {
     
     private func handleConnectionError(_ error: Error) {
         lastError = error.localizedDescription
-        connectionState = .error(error.localizedDescription)
-        isConnected = false
+        updateConnectionState(.error(error.localizedDescription))
         
-        print("❌ WebSocket connection error: \(error)")
+        print("❌ WebSocket connection error: \(error.localizedDescription)")
+        print("❌ Connection state changed to: \(connectionState)")
+        print("❌ Is connected: \(isConnected)")
         
         // Attempt to reconnect
         scheduleReconnect()
@@ -199,6 +257,7 @@ public class ROS2WebSocketManager: ObservableObject {
     
     private func startHeartbeat() {
         stopHeartbeat()
+        print("💓 Starting WebSocket heartbeat with \(heartbeatInterval) second interval")
         heartbeatTimer = Timer.scheduledTimer(withTimeInterval: heartbeatInterval, repeats: true) { [weak self] _ in
             Task { @MainActor [weak self] in
                 self?.sendHeartbeat()
@@ -212,8 +271,18 @@ public class ROS2WebSocketManager: ObservableObject {
     }
     
     private func sendHeartbeat() {
-        let message = ["op": "ping"]
-        sendMessage(message)
+        print("💓 Sending WebSocket protocol ping")
+        // Use WebSocket's built-in ping instead of custom message
+        webSocketTask?.sendPing { [weak self] error in
+            if let error = error {
+                print("❌ WebSocket ping failed: \(error.localizedDescription)")
+                Task { @MainActor [weak self] in
+                    self?.handleConnectionError(error)
+                }
+            } else {
+                print("✅ WebSocket ping successful")
+            }
+        }
     }
     
     // MARK: - Message Sending
@@ -221,16 +290,20 @@ public class ROS2WebSocketManager: ObservableObject {
     private func sendMessage(_ message: [String: Any]) {
         guard let data = try? JSONSerialization.data(withJSONObject: message),
               let jsonString = String(data: data, encoding: .utf8) else {
-            print("❌ Failed to serialize message")
+            print("❌ Failed to serialize message: \(message)")
             return
         }
         
+        print("📤 Sending WebSocket message: \(jsonString)")
+        
         webSocketTask?.send(.string(jsonString)) { [weak self] error in
             if let error = error {
-                print("❌ Failed to send message: \(error)")
+                print("❌ Failed to send message: \(error.localizedDescription)")
                 Task { @MainActor [weak self] in
                     self?.handleConnectionError(error)
                 }
+            } else {
+                print("✅ Message sent successfully")
             }
         }
     }
@@ -331,15 +404,87 @@ public class ROS2WebSocketManager: ObservableObject {
         print("🔔 Called service \(service)")
     }
     
+    // MARK: - Connection Testing
+    
+    private func testBasicConnectivity() {
+        print("🔍 Testing basic connectivity to \(serverIP):\(serverPort)")
+        
+        // Use a simple TCP connection test
+        let connection = NWConnection(
+            host: NWEndpoint.Host(serverIP),
+            port: NWEndpoint.Port(integerLiteral: UInt16(serverPort)),
+            using: .tcp
+        )
+        
+        connection.stateUpdateHandler = { state in
+            switch state {
+            case .ready:
+                print("✅ Basic TCP connectivity test passed - server is reachable")
+                connection.cancel()
+            case .failed(let error):
+                print("❌ Basic TCP connectivity test failed: \(error.localizedDescription)")
+                connection.cancel()
+            case .cancelled:
+                print("🔍 Basic TCP connectivity test cancelled")
+            default:
+                break
+            }
+        }
+        
+        connection.start(queue: DispatchQueue.global())
+        
+        // Timeout after 3 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            connection.cancel()
+        }
+    }
+    
+    private func testWebSocketConnection() {
+        print("🔍 Testing WebSocket connection with rosbridge protocol...")
+        
+        // Try to get the list of topics to test rosbridge connectivity
+        let message: [String: Any] = [
+            "op": "call_service",
+            "service": "/rosapi/topics",
+            "args": []
+        ]
+        
+        print("📤 Sending rosbridge service call to test connection...")
+        sendMessage(message)
+        
+        // Also try a WebSocket protocol ping
+        webSocketTask?.sendPing { [weak self] error in
+            Task { @MainActor [weak self] in
+                if let error = error {
+                    print("❌ WebSocket protocol ping failed: \(error.localizedDescription)")
+                } else {
+                    print("✅ WebSocket protocol ping successful")
+                }
+            }
+        }
+    }
+    
     // MARK: - Connection State Updates
     
     private func updateConnectionState(_ state: ConnectionState) {
+        let previousState = connectionState
         connectionState = state
+        
+        print("🔄 WebSocket connection state changed: \(previousState) -> \(state)")
+        
         switch state {
         case .connected:
             isConnected = true
-        default:
+            print("✅ WebSocket connected successfully to \(serverIP):\(serverPort)")
+        case .connecting:
             isConnected = false
+            print("🔄 WebSocket connecting to \(serverIP):\(serverPort)")
+        case .disconnected:
+            isConnected = false
+            print("🔌 WebSocket disconnected from \(serverIP):\(serverPort)")
+        case .error(let message):
+            isConnected = false
+            print("❌ WebSocket error: \(message)")
         }
     }
 }
