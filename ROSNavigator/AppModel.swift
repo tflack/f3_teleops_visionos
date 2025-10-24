@@ -12,13 +12,6 @@ import Network
 @MainActor
 @Observable
 class AppModel {
-    let immersiveSpaceID = "ImmersiveSpace"
-    enum ImmersiveSpaceState {
-        case closed
-        case inTransition
-        case open
-    }
-    var immersiveSpaceState = ImmersiveSpaceState.closed
     
     // MARK: - ROS2 Connection State
     var ros2ConnectionState: ROS2WebSocketManager.ConnectionState = .disconnected

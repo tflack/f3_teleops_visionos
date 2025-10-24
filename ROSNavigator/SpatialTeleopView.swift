@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-import RealityKit
 import Combine
-import RealityKitContent
 
 struct SpatialTeleopView: View {
     @Environment(AppModel.self) var appModel
@@ -21,9 +19,6 @@ struct SpatialTeleopView: View {
     @State private var nativeROS2Bridge: ROS2NativeBridge?
     @State private var cancellables = Set<AnyCancellable>()
     
-    // Camera position state for immersive space
-    @State private var rgbCameraPosition = CGPoint(x: 200, y: 200)
-    @State private var heatmapCameraPosition = CGPoint(x: 600, y: 200)
     
     init() {
         print("🌐 SpatialTeleopView init called")
@@ -33,55 +28,57 @@ struct SpatialTeleopView: View {
     }
     
     var body: some View {
-        RealityView { content in
-            print("🌐 SpatialTeleopView RealityView setup started")
-            // Add the initial RealityKit content
-            do {
-                // Try to load from RealityKitContent bundle using the proper module bundle
-                let immersiveContentEntity = try await Entity(named: "Immersive", in: realityKitContentBundle)
-                print("🌐 Successfully loaded immersive content entity from RealityKitContent bundle")
-                content.add(immersiveContentEntity)
-            } catch {
-                print("🌐 Failed to load immersive content entity: \(error)")
-                // Create a simple fallback entity
-                let fallbackEntity = Entity()
-                fallbackEntity.name = "FallbackContent"
-                print("🌐 Created fallback entity")
-                content.add(fallbackEntity)
-            }
-        } update: { content in
-            print("🌐 SpatialTeleopView RealityView update called")
-            // Update content if needed
-        }
-        .overlay(alignment: .topLeading) {
-            // Position cameras using absolute coordinates - no clipping
-            GeometryReader { geometry in
-                ZStack {
-                    // RGB Camera Feed - Positioned absolutely
-                    RealityKitCameraEntity(
-                        ros2Manager: ros2Manager,
-                        cameraType: .rgb,
-                        position: $rgbCameraPosition
-                    )
-                    .position(
-                        x: min(max(rgbCameraPosition.x, 160), geometry.size.width - 160),
-                        y: min(max(rgbCameraPosition.y, 100), geometry.size.height - 100)
-                    )
-                    
-                    // Heatmap Camera Feed - Positioned absolutely
-                    RealityKitCameraEntity(
-                        ros2Manager: ros2Manager,
-                        cameraType: .heatmap,
-                        position: $heatmapCameraPosition
-                    )
-                    .position(
-                        x: min(max(heatmapCameraPosition.x, 160), geometry.size.width - 160),
-                        y: min(max(heatmapCameraPosition.y, 100), geometry.size.height - 100)
-                    )
+        VStack(spacing: 20) {
+            // Header
+            HStack {
+                Text("Teleoperation Control")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                // Connection status
+                HStack(spacing: 8) {
+                    Circle()
+                        .fill(ros2Manager.isConnected ? .green : .red)
+                        .frame(width: 12, height: 12)
+                    Text(ros2Manager.isConnected ? "Connected" : "Disconnected")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .allowsHitTesting(true)
             }
+            .padding(.horizontal)
+            .padding(.top)
+            
+            // Camera feeds in a side-by-side layout
+            HStack(spacing: 20) {
+                // RGB Camera Feed
+                VStack {
+                    Text("RGB Camera")
+                        .font(.headline)
+                        .foregroundColor(.green)
+                    
+                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                        .frame(width: 400, height: 300)
+                        .cornerRadius(12)
+                        .shadow(radius: 5)
+                }
+                
+                // Heatmap Camera Feed
+                VStack {
+                    Text("Heatmap Camera")
+                        .font(.headline)
+                        .foregroundColor(.orange)
+                    
+                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
+                        .frame(width: 400, height: 300)
+                        .cornerRadius(12)
+                        .shadow(radius: 5)
+                }
+            }
+            .padding(.horizontal)
+            
+            Spacer()
         }
         .onAppear {
             print("🌐 SpatialTeleopView onAppear called")

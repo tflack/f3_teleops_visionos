@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import RealityKit
 
 struct ContentView: View {
     @Environment(AppModel.self) private var appModel
-    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var showVideoTest = false
     @State private var hasSelectedRobot = false
     
@@ -19,7 +17,6 @@ struct ContentView: View {
     @State private var heatmapCameraPosition = CGPoint(x: 600, y: 300)
 
     var body: some View {
-        if appModel.immersiveSpaceState == .closed {
             VStack(spacing: 20) {
             Text("ROSNavigator")
                 .font(.largeTitle)
@@ -179,59 +176,36 @@ struct ContentView: View {
                         )
                         .padding(.horizontal)
 
-                        // Connect button
-            Button {
-                Task { @MainActor in
-                    appModel.immersiveSpaceState = .inTransition
-                    switch await openImmersiveSpace(id: appModel.immersiveSpaceID) {
-                        case .opened:
-                            break
-                        case .userCancelled, .error:
-                            fallthrough
-                        @unknown default:
-                            appModel.immersiveSpaceState = .closed
-                    }
-                }
-            } label: {
-                HStack {
-                    Image(systemName: "play.circle.fill")
-                    Text("Connect to \(appModel.selectedRobot.displayName)")
-                }
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .padding(.horizontal, 24)
-            }
-            .buttonStyle(PlainButtonStyle())
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(appModel.immersiveSpaceState == .inTransition ? Color.gray : Color.blue)
-                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
-            )
-            .disabled(appModel.immersiveSpaceState == .inTransition)
-            .padding(.horizontal)
-            .padding(.bottom)
+                        // Start Teleoperation button
+                        Button {
+                            // Start teleoperation with selected robot
+                            print("🤖 Starting teleoperation with \(appModel.selectedRobot.displayName)")
+                        } label: {
+                            HStack {
+                                Image(systemName: "play.circle.fill")
+                                Text("Start Teleoperation")
+                            }
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .padding(.horizontal, 24)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.blue)
+                                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+                        )
+                        .padding(.horizontal)
+                        .padding(.bottom)
         }
-                    .onAppear {
-                        // Start checking robot connections asynchronously
-                        appModel.checkRobotConnections()
-                    }
-                    .sheet(isPresented: $showVideoTest) {
-                        SimpleMJPEGTestView()
-                    }
-        } else {
-            // Show minimal view when immersive space is open
-            VStack {
-                Text("Immersive View Active")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                Text("Camera feeds and controls are now in the immersive space")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .padding()
+        .onAppear {
+            // Start checking robot connections asynchronously
+            appModel.checkRobotConnections()
+        }
+        .sheet(isPresented: $showVideoTest) {
+            SimpleMJPEGTestView()
         }
     }
 }

@@ -20,23 +20,7 @@ struct ROSNavigatorApp: App {
                 .environment(appModel)
         }
         .windowResizability(.contentSize)
-        .defaultSize(width: 800, height: 600)
+        .defaultSize(width: 1200, height: 800)
         .windowStyle(.plain)
-
-        ImmersiveSpace(id: appModel.immersiveSpaceID) {
-            SpatialTeleopView()
-                .environment(appModel)
-                .onAppear {
-                    print("🌐 ImmersiveSpace onAppear triggered!")
-                    appModel.immersiveSpaceState = .open
-                    avPlayerViewModel.play()
-                }
-                .onDisappear {
-                    print("🌐 ImmersiveSpace onDisappear triggered!")
-                    appModel.immersiveSpaceState = .closed
-                    avPlayerViewModel.reset()
-                }
-        }
-        .immersionStyle(selection: .constant(.progressive), in: .progressive)
     }
 }
