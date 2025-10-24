@@ -21,6 +21,18 @@ struct StatusPanelView: View {
                     .fontWeight(.semibold)
             }
             
+            // Robot info header
+            HStack(spacing: 8) {
+                Image("robot_icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 24, height: 24)
+                Text("Connected Robot")
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+            }
+            
             // Connection status
             HStack {
                 Circle()
@@ -45,6 +57,26 @@ struct StatusPanelView: View {
                     .padding(.vertical, 2)
                     .background(robotStatusColor.opacity(0.2), in: Capsule())
                     .foregroundColor(robotStatusColor)
+            }
+            
+            // Robot IP
+            HStack {
+                Image(systemName: "network")
+                    .foregroundColor(.secondary)
+                Text("IP: \(appModel.selectedRobot.ipAddress)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            // Available cameras
+            if !appModel.selectedRobot.cameras.isEmpty {
+                HStack {
+                    Image(systemName: "camera.fill")
+                        .foregroundColor(.secondary)
+                    Text("Cameras: \(appModel.selectedRobot.cameras.joined(separator: ", "))")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
             
             // Stream health
