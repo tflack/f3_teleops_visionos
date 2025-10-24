@@ -216,7 +216,7 @@ struct SimpleMJPEGTestView: View {
         var topic: String {
             switch self {
             case .rgb:
-                return "/depth_cam/rgb/image_raw"
+                return "/object_detection_overlay/image_raw"
             case .heatmap:
                 return "/heatmap_3d/image_raw"
             }

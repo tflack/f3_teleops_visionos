@@ -12,6 +12,9 @@ import Network
 /// Manages WebSocket connection to ROS2 via rosbridge
 @MainActor
 public class ROS2WebSocketManager: ObservableObject {
+    // Singleton instance
+    public static let shared = ROS2WebSocketManager()
+    
     @Published var isConnected = false
     @Published var connectionState: ConnectionState = .disconnected
     @Published var lastError: String?
@@ -30,12 +33,13 @@ public class ROS2WebSocketManager: ObservableObject {
     private var subscriptions: [String: String] = [:] // topic -> subscription ID
     private var messageHandlers: [String: (Any) -> Void] = [:]
     
-    let serverIP: String
+    var serverIP: String
     private let serverPort: Int
     private let reconnectInterval: TimeInterval = 5.0
     private let heartbeatInterval: TimeInterval = 30.0
     
-    init(serverIP: String = "192.168.1.49", serverPort: Int = 9090) {
+    // Private initializer to enforce singleton pattern
+    private init(serverIP: String = "192.168.1.49", serverPort: Int = 9090) {
         self.serverIP = serverIP
         self.serverPort = serverPort
         
@@ -43,12 +47,21 @@ public class ROS2WebSocketManager: ObservableObject {
         config.timeoutIntervalForRequest = 10.0
         config.timeoutIntervalForResource = 30.0
         self.urlSession = URLSession(configuration: config)
+        print("🤖 ROS2WebSocketManager singleton instance created: \(ObjectIdentifier(self)) for \(serverIP):\(serverPort)")
     }
     
     deinit {
         Task { @MainActor [weak self] in
             self?.disconnect()
         }
+    }
+    
+    // MARK: - Singleton Configuration
+    
+    /// Update the server IP address for the singleton instance
+    func updateServerIP(_ newIP: String) {
+        print("🤖 Updating server IP from \(serverIP) to \(newIP)")
+        serverIP = newIP
     }
     
     // MARK: - Connection Management
@@ -384,6 +397,7 @@ public class ROS2WebSocketManager: ObservableObject {
         
         publish(to: topic, message: servoDict)
     }
+    
     
     // MARK: - Service Calls
     

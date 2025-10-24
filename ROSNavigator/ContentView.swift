@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(AppModel.self) private var appModel
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     @State private var showVideoTest = false
+    @State private var hasSelectedRobot = false
 
     var body: some View {
         if appModel.immersiveSpaceState == .closed {
@@ -33,6 +34,7 @@ struct ContentView: View {
                         isSelected: appModel.selectedRobot.id == robot.id,
                         onSelect: {
                             appModel.selectedRobot = robot
+                            hasSelectedRobot = true
                         }
                     )
                 }
@@ -40,7 +42,7 @@ struct ContentView: View {
             .padding(.horizontal)
             
             // Show camera streams when a robot is selected
-            if true { // Always show for now to test
+            if hasSelectedRobot {
                 VStack(spacing: 16) {
                     Text("Camera Feeds")
                         .font(.title2)
@@ -60,7 +62,7 @@ struct ContentView: View {
                                 .background(.green.opacity(0.8))
                                 .cornerRadius(8)
                             
-                            CameraFeedView(ros2Manager: ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress), selectedCamera: .constant(.rgb))
+                            CameraFeedView(ros2Manager: ROS2WebSocketManager.shared, selectedCamera: .constant(.rgb))
                         }
                         .frame(width: 300, height: 225)
                         .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))
@@ -76,7 +78,7 @@ struct ContentView: View {
                                 .background(.orange.opacity(0.8))
                                 .cornerRadius(8)
                             
-                            CameraFeedView(ros2Manager: ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress), selectedCamera: .constant(.heatmap))
+                            CameraFeedView(ros2Manager: ROS2WebSocketManager.shared, selectedCamera: .constant(.heatmap))
                         }
                         .frame(width: 300, height: 225)
                         .background(.black.opacity(0.8), in: RoundedRectangle(cornerRadius: 12))

@@ -108,28 +108,6 @@ class ActionManager: ObservableObject {
         print("🚀 Executing action: \(actionName)")
     }
     
-    func executeQuickPick(for object: DetectedObjectInfo) {
-        // Execute a quick pick action for the detected object
-        let pickMessage: [String: Any] = [
-            "class_name": object.className,
-            "confidence": object.confidence,
-            "position": [
-                "x": object.position.x,
-                "y": object.position.y,
-                "z": object.position.z
-            ],
-            "bounding_box": [
-                "x": object.boundingBox.x,
-                "y": object.boundingBox.y,
-                "width": object.boundingBox.width,
-                "height": object.boundingBox.height
-            ],
-            "distance": object.distance
-        ]
-        
-        ros2Manager.publish(to: "/execute_pick_object", message: pickMessage)
-        print("🤖 Quick pick for \(object.className) at distance \(object.distanceString)")
-    }
     
     // MARK: - Action Categories
     

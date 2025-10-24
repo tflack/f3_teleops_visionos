@@ -24,13 +24,13 @@ ros2 topic list | grep -i image || echo "❌ No image topics found"
 echo ""
 
 # Check specific topic
-echo "3. Checking /depth_cam/rgb/image_raw topic..."
-if ros2 topic list | grep -q "/depth_cam/rgb/image_raw"; then
-    echo "✅ Topic /depth_cam/rgb/image_raw exists"
+echo "3. Checking /object_detection_overlay/image_raw topic..."
+if ros2 topic list | grep -q "/object_detection_overlay/image_raw"; then
+    echo "✅ Topic /object_detection_overlay/image_raw exists"
     
     # Check if topic is publishing
     echo "Checking if topic is publishing data..."
-    timeout 5 ros2 topic echo /depth_cam/rgb/image_raw --once > /dev/null 2>&1
+    timeout 5 ros2 topic echo /object_detection_overlay/image_raw --once > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo "✅ Topic is publishing data"
     else
@@ -38,7 +38,7 @@ if ros2 topic list | grep -q "/depth_cam/rgb/image_raw"; then
         echo "💡 Check if camera is connected and publishing"
     fi
 else
-    echo "❌ Topic /depth_cam/rgb/image_raw does NOT exist"
+    echo "❌ Topic /object_detection_overlay/image_raw does NOT exist"
     echo "💡 Check camera node and topic names"
 fi
 echo ""
@@ -55,7 +55,7 @@ echo ""
 
 # Test MJPEG stream endpoint
 echo "5. Testing MJPEG stream endpoint..."
-if curl -s --connect-timeout 10 --max-time 15 "http://localhost:8080/stream?topic=/depth_cam/rgb/image_raw" > /dev/null; then
+if curl -s --connect-timeout 10 --max-time 15 "http://localhost:8080/stream?topic=/object_detection_overlay/image_raw" > /dev/null; then
     echo "✅ MJPEG stream endpoint is accessible"
 else
     echo "❌ MJPEG stream endpoint is NOT accessible"
@@ -99,12 +99,12 @@ echo "=========================="
 echo "If you're getting timeout errors:"
 echo "1. Make sure web_video_server is running: ros2 run web_video_server web_video_server"
 echo "2. Check if camera topic exists: ros2 topic list | grep image"
-echo "3. Verify camera is publishing: ros2 topic echo /depth_cam/rgb/image_raw --once"
-echo "4. Test local MJPEG stream: curl -v http://localhost:8080/stream?topic=/depth_cam/rgb/image_raw"
+echo "3. Verify camera is publishing: ros2 topic echo /object_detection_overlay/image_raw --once"
+echo "4. Test local MJPEG stream: curl -v http://localhost:8080/stream?topic=/object_detection_overlay/image_raw"
 echo "5. Check robot IP address and network connectivity"
 echo ""
 echo "Common solutions:"
 echo "- Restart web_video_server: pkill web_video_server && ros2 run web_video_server web_video_server"
 echo "- Check camera node: ros2 node list | grep camera"
-echo "- Verify topic name: ros2 topic info /depth_cam/rgb/image_raw"
+echo "- Verify topic name: ros2 topic info /object_detection_overlay/image_raw"
 echo ""

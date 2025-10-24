@@ -16,8 +16,9 @@ struct ImmersiveView: View {
     
     init() {
         print("🌐 ImmersiveView init called")
-        // Initialize with default robot, will be updated in onAppear
-        _ros2Manager = State(initialValue: ROS2WebSocketManager(serverIP: AppModel.Robot.alpha.ipAddress))
+        // Use singleton instance and update IP if needed
+        _ros2Manager = State(initialValue: ROS2WebSocketManager.shared)
+        ros2Manager.updateServerIP(AppModel.Robot.alpha.ipAddress)
     }
 
     var body: some View {
@@ -75,8 +76,8 @@ struct ImmersiveView: View {
         print("🔌 Setting up ROS2 connection for robot: \(appModel.selectedRobot.name)")
         print("🔌 Robot IP: \(appModel.selectedRobot.ipAddress)")
         
-        // Reinitialize ROS2WebSocketManager with selected robot's IP
-        ros2Manager = ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress)
+        // Update the singleton instance with selected robot's IP
+        ros2Manager.updateServerIP(appModel.selectedRobot.ipAddress)
         
         // Connect to ROS2 WebSocket
         print("🔌 Initiating WebSocket connection...")

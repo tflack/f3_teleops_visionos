@@ -12,7 +12,6 @@ import AVKit
 struct CameraFeedView: View {
     let ros2Manager: ROS2WebSocketManager
     @State private var videoStreamManager: VideoStreamManager
-    @State private var detectedObjects: [DetectedObjectInfo] = []
     @Binding var selectedCamera: VideoStreamManager.CameraType
     
     init(ros2Manager: ROS2WebSocketManager, selectedCamera: Binding<VideoStreamManager.CameraType> = .constant(.rgb)) {
@@ -24,6 +23,7 @@ struct CameraFeedView: View {
         // Start streams immediately to ensure URLs are available
         streamManager.startStreams()
         self._videoStreamManager = State(initialValue: streamManager)
+        
     }
     
     var body: some View {
@@ -68,16 +68,8 @@ struct CameraFeedView: View {
                         print("📹 Server IP: \(ros2Manager.serverIP)")
                         print("📹 VideoStreamManager connected: \(videoStreamManager.isConnected)")
                     }
-            }
+                }
             
-            // Object detection overlay
-            if !detectedObjects.isEmpty {
-                ObjectDetectionOverlayView(objects: detectedObjects)
-            }
-            
-            // LIDAR overlay
-            LidarOverlayView(ros2Manager: ros2Manager)
-                .opacity(0.7)
             
             // Stream status indicator
             VStack {
@@ -89,57 +81,10 @@ struct CameraFeedView: View {
                 Spacer()
             }
         }
-        .onAppear {
-            setupObjectDetection()
-        }
     }
     
     private func setupVideoStreams() {
         videoStreamManager.startStreams()
-    }
-    
-    private func setupObjectDetection() {
-        ros2Manager.subscribe(to: "/detected_objects", messageType: "interfaces/DetectedObjects") { message in
-            if let data = message as? [String: Any],
-               let objectsData = data["objects"] as? [[String: Any]] {
-                Task { @MainActor in
-                    detectedObjects = objectsData.compactMap { objData in
-                        // Parse detected object data
-                        guard let className = objData["class_name"] as? String,
-                              let confidence = objData["confidence"] as? Double,
-                              let positionData = objData["position"] as? [String: Any],
-                              let boundingBoxData = objData["bounding_box"] as? [String: Any],
-                              let distance = objData["distance"] as? Double else {
-                            return nil
-                        }
-                        
-                        // Create DetectedObjectInfo
-                        let position = DetectedObjects.DetectedObject.Position(
-                            x: positionData["x"] as? Double ?? 0,
-                            y: positionData["y"] as? Double ?? 0,
-                            z: positionData["z"] as? Double ?? 0
-                        )
-                        
-                        let boundingBox = DetectedObjects.DetectedObject.BoundingBox(
-                            x: boundingBoxData["x"] as? Int ?? 0,
-                            y: boundingBoxData["y"] as? Int ?? 0,
-                            width: boundingBoxData["width"] as? Int ?? 0,
-                            height: boundingBoxData["height"] as? Int ?? 0
-                        )
-                        
-                        let detectedObject = DetectedObjects.DetectedObject(
-                            className: className,
-                            confidence: confidence,
-                            position: position,
-                            boundingBox: boundingBox,
-                            distance: distance
-                        )
-                        
-                        return DetectedObjectInfo(from: detectedObject)
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -164,6 +109,6 @@ struct StreamStatusIndicator: View {
 }
 
 #Preview {
-    CameraFeedView(ros2Manager: ROS2WebSocketManager())
+    CameraFeedView(ros2Manager: ROS2WebSocketManager.shared)
         .frame(width: 640, height: 360)
 }

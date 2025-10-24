@@ -23,8 +23,9 @@ struct SpatialTeleopView: View {
     
     init() {
         print("🌐 SpatialTeleopView init called")
-        // Initialize with default robot, will be updated in onAppear
-        _ros2Manager = State(initialValue: ROS2WebSocketManager(serverIP: AppModel.Robot.alpha.ipAddress))
+        // Use singleton instance and update IP if needed
+        _ros2Manager = State(initialValue: ROS2WebSocketManager.shared)
+        ros2Manager.updateServerIP(AppModel.Robot.alpha.ipAddress)
     }
     
     var body: some View {
@@ -51,25 +52,33 @@ struct SpatialTeleopView: View {
         .overlay(alignment: .topTrailing) {
             // Dual camera feeds positioned to match content view window position
             HStack(spacing: 16) {
-                // RGB Camera Feed
-                CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
-                    .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
-                    .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
-                    .overlay(alignment: .topTrailing) {
-                        // Online status overlay
-                        HStack(spacing: 4) {
-                            Circle()
-                                .fill(.green)
-                                .frame(width: 8, height: 8)
-                            Text("LIVE")
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
+                // RGB Camera Feed with Object Detection
+                ZStack {
+                    CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                        .frame(width: 320, height: 180) // 16:9 aspect ratio (320/180 = 1.78)
+                        .background(.black.opacity(0.9), in: RoundedRectangle(cornerRadius: 12))
+                    
+                    
+                    // Online status overlay
+                    VStack {
+                        HStack {
+                            Spacer()
+                            HStack(spacing: 4) {
+                                Circle()
+                                    .fill(.green)
+                                    .frame(width: 8, height: 8)
+                                Text("LIVE")
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                            }
+                            .padding(8)
+                            .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
+                            .padding(8)
                         }
-                        .padding(8)
-                        .background(.black.opacity(0.7), in: RoundedRectangle(cornerRadius: 6))
-                        .padding(8)
+                        Spacer()
                     }
+                }
                 
                 // Heatmap Camera Feed
                 CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
@@ -152,8 +161,9 @@ struct SpatialTeleopView: View {
         print("🔌 Setting up ROS2 connection for robot: \(appModel.selectedRobot.name)")
         print("🔌 Robot IP: \(appModel.selectedRobot.ipAddress)")
         
-        // Reinitialize ROS2WebSocketManager with selected robot's IP
-        ros2Manager = ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress)
+        // Update the existing ROS2WebSocketManager with selected robot's IP
+        ros2Manager.updateServerIP(appModel.selectedRobot.ipAddress)
+        print("🤖 Updated existing ROS2WebSocketManager instance for \(appModel.selectedRobot.ipAddress)")
         
         // Connect to ROS2 WebSocket
         print("🔌 Initiating WebSocket connection...")
@@ -164,6 +174,7 @@ struct SpatialTeleopView: View {
             for await state in ros2Manager.$connectionState.values {
                 print("🔌 ROS2 connection state changed: \(state)")
                 appModel.updateROS2ConnectionState(state)
+                
             }
         }
         

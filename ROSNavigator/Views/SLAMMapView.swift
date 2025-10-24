@@ -256,6 +256,6 @@ struct SLAMCanvasView: View {
 }
 
 #Preview {
-    SLAMMapView(ros2Manager: ROS2WebSocketManager())
+    SLAMMapView(ros2Manager: ROS2WebSocketManager.shared)
         .frame(width: 300, height: 200)
 }

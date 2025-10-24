@@ -214,6 +214,6 @@ struct PointCloudCanvasView: View {
 }
 
 #Preview {
-    PointCloudView(ros2Manager: ROS2WebSocketManager())
+    PointCloudView(ros2Manager: ROS2WebSocketManager.shared)
         .frame(width: 400, height: 400)
 }

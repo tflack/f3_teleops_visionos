@@ -354,8 +354,6 @@ class ROS2NativeBridge: ObservableObject {
             return "nav_msgs/OccupancyGrid"
         case "/cloud_map":
             return "sensor_msgs/PointCloud2"
-        case "/detected_objects":
-            return "interfaces/DetectedObjects"
         case "/obstacle_warning":
             return "std_msgs/Bool"
         case "/safety_override":

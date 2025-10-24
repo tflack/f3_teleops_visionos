@@ -33,12 +33,12 @@ class VideoStreamManager: ObservableObject {
     
     func startStreams() {
         // Create stream URLs for RGB and heatmap camera feeds using the serverIP parameter
-        rgbStreamURL = URL(string: "http://\(serverIP):\(serverPort)/stream?topic=/depth_cam/rgb/image_raw")
+        rgbStreamURL = URL(string: "http://\(serverIP):\(serverPort)/stream?topic=/object_detection_overlay/image_raw")
         heatmapStreamURL = URL(string: "http://\(serverIP):\(serverPort)/stream?topic=/heatmap_3d/image_raw")
         irStreamURL = nil
         
         print("📹 Created stream URLs:")
-        print("   RGB: \(rgbStreamURL?.absoluteString ?? "nil")")
+        print("   RGB (Object Detection Overlay): \(rgbStreamURL?.absoluteString ?? "nil")")
         print("   Heatmap: \(heatmapStreamURL?.absoluteString ?? "nil")")
         print("   IR: Disabled")
         

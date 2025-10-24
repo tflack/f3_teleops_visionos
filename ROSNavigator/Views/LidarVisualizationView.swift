@@ -183,6 +183,6 @@ struct ConnectionIndicator: View {
 }
 
 #Preview {
-    LidarVisualizationView(ros2Manager: ROS2WebSocketManager())
+    LidarVisualizationView(ros2Manager: ROS2WebSocketManager.shared)
         .frame(width: 300, height: 300)
 }
