@@ -11,7 +11,7 @@ import Combine
 
 struct SpatialTeleopView: View {
     @Environment(AppModel.self) var appModel
-    @State private var ros2Manager = ROS2WebSocketManager()
+    @State private var ros2Manager: ROS2WebSocketManager
     @State private var gamepadManager = GamepadManager()
     @State private var inputCoordinator: InputCoordinator?
     @State private var robotControlManager: RobotControlManager?
@@ -19,6 +19,11 @@ struct SpatialTeleopView: View {
     @State private var windowCoordinator = WindowCoordinator()
     @State private var nativeROS2Bridge: ROS2NativeBridge?
     @State private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        // Initialize with default robot, will be updated in onAppear
+        _ros2Manager = State(initialValue: ROS2WebSocketManager(serverIP: AppModel.Robot.alpha.ipAddress))
+    }
     
     var body: some View {
         RealityView { content in
@@ -92,8 +97,8 @@ struct SpatialTeleopView: View {
             .padding()
         }
         .onAppear {
-            setupManagers()
             setupROS2Connection()
+            setupManagers()
         }
         .onDisappear {
             ros2Manager.disconnect()
@@ -143,6 +148,9 @@ struct SpatialTeleopView: View {
     }
     
     private func setupROS2Connection() {
+        // Reinitialize ROS2WebSocketManager with selected robot's IP
+        ros2Manager = ROS2WebSocketManager(serverIP: appModel.selectedRobot.ipAddress)
+        
         // Connect to ROS2 WebSocket
         ros2Manager.connect()
         
