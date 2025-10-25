@@ -1,0 +1,104 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Controls/VirtualJoystickView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "X: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Y: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Control Mode",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 249
+        }
+      },
+      {
+        "comment": "",
+        "key": "Manual",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 250
+        }
+      },
+      {
+        "comment": "",
+        "key": "Arm",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 251
+        }
+      },
+      {
+        "comment": "",
+        "key": "Autonomous",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 252
+        }
+      },
+      {
+        "comment": "",
+        "key": "Speed: %lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 261
+        }
+      },
+      {
+        "comment": "",
+        "key": "EMERGENCY STOP",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 276
+        }
+      },
+      {
+        "comment": "",
+        "key": "E-STOP",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 276
+        }
+      },
+      {
+        "comment": "",
+        "key": "Left: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 298
+        }
+      },
+      {
+        "comment": "",
+        "key": "Right: %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 301
+        }
+      },
+      {
+        "comment": "",
+        "key": "Speed: %lld%%",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 304
+        }
+      }
+    ]
+  },
+  "version": 1
+}

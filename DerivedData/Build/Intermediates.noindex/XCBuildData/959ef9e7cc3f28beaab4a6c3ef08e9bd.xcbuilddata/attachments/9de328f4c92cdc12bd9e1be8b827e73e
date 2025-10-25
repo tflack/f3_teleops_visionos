@@ -1,0 +1,439 @@
+{
+  "" : {
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/F3ROSTeleops-primary.dia",
+    "emit-module-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/F3ROSTeleops-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/F3ROSTeleops-primary-emit-module.dia",
+    "pch" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/F3ROSTeleops-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/F3ROSTeleops-primary.swiftdeps"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/AVPlayerView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/AVPlayerViewModel.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AVPlayerViewModel~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ActionManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ActionManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/AppModel.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AppModel~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ContentView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Controls/VirtualJoystickView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VirtualJoystickView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ErrorHandlingManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ErrorHandlingManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/GamepadManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/GamepadManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ImmersiveView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/InputCoordinator.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/InputCoordinator~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/PerformanceManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PerformanceManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2Messages/LaserScan.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LaserScan~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2Messages/OccupancyGrid.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/OccupancyGrid~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2Messages/PointCloud2.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloud2~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2Messages/ServoControl.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ServoControl~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2Messages/Twist.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Twist~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2NativeBridge.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2NativeBridge~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROS2WebSocketManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROS2WebSocketManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ROSNavigatorApp.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ROSNavigatorApp~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/RobotControlManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RobotControlManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/SpatialTeleopView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SpatialTeleopView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/UserExperienceManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/UserExperienceManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/VideoStreamManager.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoStreamManager~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/AlertsPanelView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/AlertsPanelView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/CameraFeedView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/CameraFeedView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/ConnectionStatusView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ConnectionStatusView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/DebugConsoleView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DebugConsoleView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/DraggableCameraFeedView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/DraggableCameraFeedView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/Immersive3DCameraView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/Immersive3DCameraView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/ImmersiveDraggableCameraView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/ImmersiveDraggableCameraView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/LidarVisualizationView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/LidarVisualizationView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/PointCloudView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/PointCloudView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/RealityKitCameraEntity.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/RealityKitCameraEntity~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SLAMMapView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SLAMMapView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SettingsView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SimpleMJPEGView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleMJPEGView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SimpleVideoView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleVideoView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SimpleWebViewTest.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/SimpleWebViewTest~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/StatusPanelView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/StatusPanelView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/VideoTestView.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/VideoTestView~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/WebViewVideoPlayer.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WebViewVideoPlayer~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/WindowCoordinator.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/F3ROSTeleops.build/Objects-normal/arm64/WindowCoordinator~partial.swiftmodule"
+  }
+}

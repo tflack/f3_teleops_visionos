@@ -1,0 +1,40 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SLAMMapView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "SLAM Map Not Available",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Topic: /map",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "SLAM system not running",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "Not connected to robot",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 66
+        }
+      }
+    ]
+  },
+  "version": 1
+}

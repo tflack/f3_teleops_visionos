@@ -1,0 +1,48 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/SimpleWebViewTest.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "WebView Test",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "Simple WebView Stream Test",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hardcoded URL: %@",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading stream...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error: %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 56
+        }
+      }
+    ]
+  },
+  "version": 1
+}

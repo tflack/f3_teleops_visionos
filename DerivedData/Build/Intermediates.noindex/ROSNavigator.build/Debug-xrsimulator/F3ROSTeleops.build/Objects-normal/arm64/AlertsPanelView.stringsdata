@@ -1,0 +1,24 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/AlertsPanelView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Alerts",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "All systems nominal",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 92
+        }
+      }
+    ]
+  },
+  "version": 1
+}

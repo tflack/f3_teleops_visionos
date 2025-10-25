@@ -1,0 +1,29 @@
+{
+  "" : {
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests-primary.dia",
+    "emit-module-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests-primary-emit-module.dia",
+    "pch" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests-primary.swiftdeps"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigatorTests/ROSNavigatorTests.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/ROSNavigatorTests~partial.swiftmodule"
+  },
+  "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigatorTests/SLAMPointCloudTest.swift" : {
+    "const-values" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.swiftconstvalues",
+    "dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.d",
+    "diagnostics" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.dia",
+    "index-unit-output-path" : "/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.o",
+    "llvm-bc" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.bc",
+    "object" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.o",
+    "swift-dependencies" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest.swiftdeps",
+    "swiftmodule" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/ROSNavigator.build/Debug-xrsimulator/ROSNavigatorTests.build/Objects-normal/arm64/SLAMPointCloudTest~partial.swiftmodule"
+  }
+}

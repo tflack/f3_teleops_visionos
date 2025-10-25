@@ -1,0 +1,11 @@
+{
+  "dependencies" : [
+
+  ],
+  "module" : {
+    "moduleName" : "RealityKitContent",
+    "swiftFiles" : [
+      "/Users/timflack/git/f3/visionOS/ROSNavigator/Packages/RealityKitContent/Sources/RealityKitContent/RealityKitContent.swift"
+    ]
+  }
+}

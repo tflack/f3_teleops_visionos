@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import ROSNavigator
+@testable import F3ROSTeleops
 
 final class ROSNavigatorTests: XCTestCase {
 

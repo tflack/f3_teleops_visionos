@@ -1,0 +1,112 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/SpatialTeleopView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "%@ Control",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Connected",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Disconnected",
+        "location": {
+          "startingColumn": 66,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Exit",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "RGB Camera",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Heatmap Camera",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 96
+        }
+      },
+      {
+        "comment": "",
+        "key": "SLAM Map",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "3D Point Cloud",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "Speed: %lld%%",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 254
+        }
+      },
+      {
+        "comment": "",
+        "key": "🚗 Manual",
+        "location": {
+          "startingColumn": 85,
+          "startingLine": 267
+        }
+      },
+      {
+        "comment": "",
+        "key": "🤖 Arm",
+        "location": {
+          "startingColumn": 101,
+          "startingLine": 267
+        }
+      },
+      {
+        "comment": "",
+        "key": "STOPPED",
+        "location": {
+          "startingColumn": 74,
+          "startingLine": 278
+        }
+      },
+      {
+        "comment": "",
+        "key": "E-STOP",
+        "location": {
+          "startingColumn": 86,
+          "startingLine": 278
+        }
+      }
+    ]
+  },
+  "version": 1
+}

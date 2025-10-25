@@ -1,0 +1,104 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "ROSNavigator",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "Selected: %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select a robot to connect",
+        "location": {
+          "startingColumn": 89,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "Camera Feeds",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "Back to Robot List",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 63
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reset Cameras",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Change Robot",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Back to Robot Selection",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 139
+        }
+      },
+      {
+        "comment": "",
+        "key": "Test Video Stream",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 170
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Teleoperation",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "IP: %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 257
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cameras: %@",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 262
+        }
+      }
+    ]
+  },
+  "version": 1
+}

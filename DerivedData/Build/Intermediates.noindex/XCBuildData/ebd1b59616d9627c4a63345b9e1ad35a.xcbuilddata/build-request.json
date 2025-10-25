@@ -1,0 +1,75 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "df7a63066eaf9fe7b021e0e19786692591a0a8997d97dede254f12bcad9eede8"
+    },
+    {
+      "guid" : "df7a63066eaf9fe7b021e0e19786692509f269df59bb6d544f936517944d89a3"
+    }
+  ],
+  "containerPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "xrsimulator",
+      "sdk" : "xrsimulator26.0",
+      "sdkVariant" : "xrsimulator",
+      "supportedArchitectures" : [
+        "arm64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Products",
+      "derivedDataPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "RealityDevice14,1",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "26.0",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "RealityDevice14,1",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "CLANG_COVERAGE_MAPPING" : "YES",
+          "CLANG_PROFILE_DATA_DIRECTORY" : "/Users/timflack/git/f3/visionOS/ROSNavigator/DerivedData/Build/ProfileData",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "ONLY_ACTIVE_ARCH" : "YES",
+          "TARGET_DEVICE_IDENTIFIER" : "C0C31BC6-1F6D-47E4-B0B5-487CE340C8E8",
+          "TARGET_DEVICE_MODEL" : "RealityDevice14,1",
+          "TARGET_DEVICE_OS_VERSION" : "26.0",
+          "TARGET_DEVICE_PLATFORM_NAME" : "xrsimulator",
+          "TOOLCHAINS" : "com.apple.dt.toolchain.Metal.32023 $(inherited)"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "test",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

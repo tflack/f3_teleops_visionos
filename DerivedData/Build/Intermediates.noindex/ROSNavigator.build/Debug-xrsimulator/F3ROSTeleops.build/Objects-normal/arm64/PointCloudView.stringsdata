@@ -1,0 +1,40 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/PointCloudView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Point Cloud Not Available",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Topic: /cloud_map",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 89
+        }
+      },
+      {
+        "comment": "",
+        "key": "Point cloud system not running",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Not connected to robot",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 96
+        }
+      }
+    ]
+  },
+  "version": 1
+}

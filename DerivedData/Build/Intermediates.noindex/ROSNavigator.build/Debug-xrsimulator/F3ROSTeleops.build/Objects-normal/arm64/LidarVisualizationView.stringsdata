@@ -1,0 +1,32 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/Views/LidarVisualizationView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Waiting for LIDAR data...",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "LIDAR",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "OFFLINE",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 174
+        }
+      }
+    ]
+  },
+  "version": 1
+}

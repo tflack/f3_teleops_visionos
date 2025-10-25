@@ -1,0 +1,24 @@
+{
+  "source": "/Users/timflack/git/f3/visionOS/ROSNavigator/ROSNavigator/ImmersiveView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Immersive View Active",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Camera feeds are now displayed in the main content view",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 55
+        }
+      }
+    ]
+  },
+  "version": 1
+}
