@@ -10,8 +10,8 @@ import Combine
 
 struct SpatialTeleopView: View {
     @Environment(AppModel.self) var appModel
-    @State private var ros2Manager: ROS2WebSocketManager
-    @State private var gamepadManager = GamepadManager()
+    @ObservedObject private var ros2Manager = ROS2WebSocketManager.shared
+    @StateObject private var gamepadManager = GamepadManager()
     @State private var inputCoordinator: InputCoordinator?
     @State private var robotControlManager: RobotControlManager?
     @State private var actionManager: ActionManager?
@@ -24,14 +24,13 @@ struct SpatialTeleopView: View {
     init(onExit: (() -> Void)? = nil) {
         self.onExit = onExit
         print("🌐 SpatialTeleopView init called")
-        // Use singleton instance and update IP if needed
-        _ros2Manager = State(initialValue: ROS2WebSocketManager.shared)
-        ros2Manager.updateServerIP(AppModel.Robot.alpha.ipAddress)
+        // Update IP for singleton instance
+        ROS2WebSocketManager.shared.updateServerIP(AppModel.Robot.alpha.ipAddress)
     }
     
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 0) {
             // Header
             HStack {
                 HStack(spacing: 12) {
@@ -74,67 +73,267 @@ struct SpatialTeleopView: View {
             }
             .padding(.horizontal)
             .padding(.top)
+            .padding(.bottom, 20)
             
-            // 2x2 Grid of views
-            VStack(spacing: 20) {
-                // Top row: RGB Camera and Heatmap Camera
-                HStack(spacing: 20) {
-                    // RGB Camera Feed
-                    VStack {
-                        Text("RGB Camera")
-                            .font(.headline)
-                            .foregroundColor(.green)
+            // Main content: Left side (controls/info) + Right side (camera column)
+            HStack(alignment: .top, spacing: 0) {
+                // Left side: Control panel
+                ScrollView {
+                    VStack(spacing: 16) {
+                        // Connection Status
+                        VStack(spacing: 6) {
+                            HStack(spacing: 6) {
+                                Circle()
+                                    .fill(ros2Manager.isConnected ? .green : .red)
+                                    .frame(width: 8, height: 8)
+                                Text(ros2Manager.isConnected ? "Robot" : "Robot")
+                                    .font(.caption2)
+                                    .fontWeight(.semibold)
+                                Spacer()
+                            }
+                            .padding(6)
+                            .background(ros2Manager.isConnected ? Color.green.opacity(0.1) : Color.red.opacity(0.1))
+                            .cornerRadius(4)
+                            
+                            HStack(spacing: 6) {
+                                Circle()
+                                    .fill(gamepadManager.isConnected ? .green : .gray)
+                                    .frame(width: 8, height: 8)
+                                Text(gamepadManager.isConnected ? "Gamepad" : "Gamepad")
+                                    .font(.caption2)
+                                    .fontWeight(.semibold)
+                                Spacer()
+                            }
+                            .padding(6)
+                            .background(gamepadManager.isConnected ? Color.green.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(4)
+                        }
                         
-                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
-                            .frame(width: 400, height: 300)
-                            .cornerRadius(12)
-                            .shadow(radius: 5)
-                    }
-                    
-                    // Heatmap Camera Feed
-                    VStack {
-                        Text("Heatmap Camera")
-                            .font(.headline)
-                            .foregroundColor(.orange)
+                        Divider()
                         
-                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
-                            .frame(width: 400, height: 300)
-                            .cornerRadius(12)
-                            .shadow(radius: 5)
+                        // Joysticks Display
+                        HStack(spacing: 16) {
+                            VStack {
+                                Text("LEFT")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.bold)
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.2))
+                                        .frame(width: 80, height: 80)
+                                    Circle()
+                                        .stroke(Color.gray.opacity(0.4), style: StrokeStyle(lineWidth: 1, dash: [2]))
+                                        .frame(width: 60, height: 60)
+                                    Circle()
+                                        .fill(Color.blue)
+                                        .frame(width: 20, height: 20)
+                                        .offset(
+                                            x: CGFloat(gamepadManager.leftStick.x) * 30,
+                                            y: -CGFloat(gamepadManager.leftStick.y) * 30
+                                        )
+                                }
+                                Text("X: \(String(format: "%.2f", gamepadManager.leftStick.x)) Y: \(String(format: "%.2f", gamepadManager.leftStick.y))")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .monospaced()
+                            }
+                            
+                            VStack {
+                                Text("RIGHT")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.bold)
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.gray.opacity(0.2))
+                                        .frame(width: 80, height: 80)
+                                    Circle()
+                                        .stroke(Color.gray.opacity(0.4), style: StrokeStyle(lineWidth: 1, dash: [2]))
+                                        .frame(width: 60, height: 60)
+                                    Circle()
+                                        .fill(Color.green)
+                                        .frame(width: 20, height: 20)
+                                        .offset(
+                                            x: CGFloat(gamepadManager.rightStick.x) * 30,
+                                            y: -CGFloat(gamepadManager.rightStick.y) * 30
+                                        )
+                                }
+                                Text("X: \(String(format: "%.2f", gamepadManager.rightStick.x)) Y: \(String(format: "%.2f", gamepadManager.rightStick.y))")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary)
+                                    .monospaced()
+                            }
+                        }
+                        
+                        Divider()
+                        
+                        // Speed Control
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Text("SPEED")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                Text("\(robotControlManager?.speed ?? 25)%")
+                                    .font(.caption)
+                                    .foregroundColor(.blue)
+                                    .fontWeight(.bold)
+                            }
+                            Slider(value: Binding(
+                                get: { Double(robotControlManager?.speed ?? 25) },
+                                set: { robotControlManager?.setSpeed(Int($0)) }
+                            ), in: 0...100)
+                            .tint(.blue)
+                        }
+                        
+                        Divider()
+                        
+                        // Mode Control
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("MODE")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .fontWeight(.bold)
+                            
+                            HStack(spacing: 12) {
+                                Button(action: {
+                                    robotControlManager?.setControlMode(.manual)
+                                }) {
+                                    HStack {
+                                        Image(systemName: "car.fill")
+                                        Text("Move")
+                                    }
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor((robotControlManager?.controlMode ?? .manual) == .manual ? .white : .blue)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background((robotControlManager?.controlMode ?? .manual) == .manual ? Color.blue : Color.blue.opacity(0.1))
+                                    .cornerRadius(8)
+                                }
+                                
+                                Button(action: {
+                                    robotControlManager?.setControlMode(.arm)
+                                }) {
+                                    HStack {
+                                        Image(systemName: "hand.raised.fill")
+                                        Text("Arm")
+                                    }
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor((robotControlManager?.controlMode ?? .manual) == .arm ? .white : .orange)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background((robotControlManager?.controlMode ?? .manual) == .arm ? Color.orange : Color.orange.opacity(0.1))
+                                    .cornerRadius(8)
+                                }
+                            }
+                        }
+                        
+                        Divider()
+                        
+                        // Actions Dropdown
+                        if let actionManager = actionManager {
+                            ActionMenuView(actionManager: actionManager)
+                        }
+                        
+                        Divider()
+                        
+                        // Emergency Stop
+                        Button(action: {
+                            let newState = !(robotControlManager?.emergencyStop ?? false)
+                            robotControlManager?.setEmergencyStop(newState)
+                        }) {
+                            HStack {
+                                Image(systemName: "hand.raised.slash.fill")
+                                    .font(.title3)
+                                Text((robotControlManager?.emergencyStop ?? false) ? "STOPPED" : "E-STOP")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                            }
+                            .foregroundColor((robotControlManager?.emergencyStop ?? false) ? .black : .white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background((robotControlManager?.emergencyStop ?? false) ? Color.red : Color.red.opacity(0.3))
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.red, lineWidth: 2)
+                            )
+                        }
+                        
+                        // Safety Override & Obstacle Warning
+                        if appModel.obstacleWarning {
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .foregroundColor(.yellow)
+                                Text("Obstacle Detected")
+                                    .font(.caption)
+                                    .fontWeight(.semibold)
+                                Spacer()
+                            }
+                            .padding(8)
+                            .background(Color.yellow.opacity(0.2))
+                            .cornerRadius(6)
+                        }
                     }
+                    .padding()
                 }
+                .frame(width: 300)
+                .background(Color.black.opacity(0.3))
+                .cornerRadius(12)
+                .padding(.leading, 20)
                 
-                // Bottom row: SLAM Map and Point Cloud
-                HStack(spacing: 20) {
-                    // SLAM Map
-                    VStack {
-                        Text("SLAM Map")
-                            .font(.headline)
-                            .foregroundColor(.blue)
-                        
+                Spacer()
+                
+                // Right side: Camera column
+                ScrollView {
+                    VStack(spacing: 4) {
+                        // SLAM Map
                         SLAMMapView(ros2Manager: ros2Manager)
-                            .frame(width: 400, height: 300)
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .background(.black.opacity(0.8))
                             .cornerRadius(12)
                             .shadow(radius: 5)
-                    }
-                    
-                    // 3D Point Cloud
-                    VStack {
-                        Text("3D Point Cloud")
-                            .font(.headline)
-                            .foregroundColor(.purple)
                         
+                        // 3D Point Cloud
                         PointCloudView(ros2Manager: ros2Manager)
-                            .frame(width: 400, height: 300)
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .background(.black.opacity(0.8))
                             .cornerRadius(12)
                             .shadow(radius: 5)
+
+
+                        // RGB Camera Feed
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                        
+                        // Heatmap Camera Feed
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                    
                     }
+                    .padding(.bottom, 20)
                 }
+                .frame(width: 780)
+                .padding(.trailing, 20)
             }
-            .padding(.horizontal)
-            
-            Spacer()
         }
+        .frame(minWidth: 2400, minHeight: 1600)
         .onAppear {
             print("🌐 SpatialTeleopView onAppear called")
             setupROS2Connection()
@@ -205,6 +404,11 @@ struct SpatialTeleopView: View {
                 print("🔌 ROS2 connection state changed: \(state)")
                 appModel.updateROS2ConnectionState(state)
                 
+                // Load actions when connected
+                if case .connected = state {
+                    print("🔌 WebSocket connected, loading actions...")
+                    actionManager?.loadAvailableActions()
+                }
             }
         }
         
@@ -217,9 +421,6 @@ struct SpatialTeleopView: View {
                 }
             }
         }
-        
-        // Load available actions
-        actionManager?.loadAvailableActions()
         
         // Connect native ROS2 bridge as alternative
         nativeROS2Bridge?.connect()
@@ -391,6 +592,56 @@ struct JoystickView: View {
                         state.values = (0, 0)
                     }
             )
+        }
+    }
+}
+
+// MARK: - Action Menu View
+struct ActionMenuView: View {
+    @ObservedObject var actionManager: ActionManager
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("ACTIONS")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .fontWeight(.bold)
+            
+            if let actions = actionManager.availableActions {
+                Menu {
+                    ForEach(actions.allActions, id: \.self) { action in
+                        Button(action) {
+                            actionManager.executeAction(action)
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text("Select Action")
+                            .font(.caption)
+                        Spacer()
+                        Image(systemName: "chevron.down")
+                            .font(.caption2)
+                    }
+                    .foregroundColor(.white)
+                    .padding(8)
+                    .background(Color.gray.opacity(0.3))
+                    .cornerRadius(6)
+                }
+                
+                Text("\(actions.totalCount) actions available")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            } else {
+                HStack {
+                    Text(actionManager.isLoading ? "Loading actions..." : "No actions available")
+                        .font(.caption)
+                    Spacer()
+                }
+                .foregroundColor(.gray)
+                .padding(8)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(6)
+            }
         }
     }
 }

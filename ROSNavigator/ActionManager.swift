@@ -56,8 +56,12 @@ class ActionManager: ObservableObject {
     // MARK: - Action Loading
     
     func loadAvailableActions() {
-        guard !isLoading else { return }
+        guard !isLoading else {
+            print("⚠️ ActionManager: Already loading actions, skipping...")
+            return
+        }
         
+        print("🔔 ActionManager: Starting to load available actions...")
         isLoading = true
         lastError = nil
         
@@ -67,31 +71,54 @@ class ActionManager: ObservableObject {
                 
                 switch result {
                 case .success(let response):
+                    print("🔔 ActionManager: Received service response: \(response)")
                     self?.parseActionResponse(response)
                 case .failure(let error):
                     self?.lastError = error.localizedDescription
-                    print("❌ Failed to load actions: \(error)")
+                    print("❌ ActionManager: Failed to load actions: \(error)")
                 }
             }
         }
     }
     
     private func parseActionResponse(_ response: [String: Any]) {
-        guard let success = response["success"] as? Bool,
-              success,
-              let message = response["message"] as? String,
-              let data = message.data(using: .utf8) else {
-            lastError = "Invalid action response format"
+        print("🔔 ActionManager: Parsing response: \(response)")
+        
+        guard let success = response["success"] as? Bool else {
+            lastError = "Invalid action response format - missing 'success' field"
+            print("❌ ActionManager: Missing 'success' field in response")
+            return
+        }
+        
+        guard success else {
+            lastError = "Service call failed - success=false"
+            print("❌ ActionManager: Service call returned success=false")
+            return
+        }
+        
+        guard let message = response["message"] as? String else {
+            lastError = "Invalid action response format - missing 'message' field"
+            print("❌ ActionManager: Missing 'message' field in response")
+            return
+        }
+        
+        print("🔔 ActionManager: Message string: \(message)")
+        
+        guard let data = message.data(using: .utf8) else {
+            lastError = "Failed to convert message to data"
+            print("❌ ActionManager: Failed to convert message to UTF8 data")
             return
         }
         
         do {
             let actionData = try JSONDecoder().decode(ActionData.self, from: data)
             availableActions = actionData
-            print("✅ Loaded \(actionData.totalCount) actions")
+            print("✅ ActionManager: Successfully loaded \(actionData.totalCount) actions")
+            print("✅ ActionManager: Actions: \(actionData.allActions.joined(separator: ", "))")
         } catch {
             lastError = "Failed to parse actions: \(error.localizedDescription)"
-            print("❌ Action parsing error: \(error)")
+            print("❌ ActionManager: JSON parsing error: \(error)")
+            print("❌ ActionManager: Raw message: \(message)")
         }
     }
     

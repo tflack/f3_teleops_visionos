@@ -32,6 +32,7 @@ public class ROS2WebSocketManager: ObservableObject {
     private var heartbeatTimer: Timer?
     private var subscriptions: [String: String] = [:] // topic -> subscription ID
     private var messageHandlers: [String: (Any) -> Void] = [:]
+    private var serviceCallHandlers: [String: (Result<[String: Any], Error>) -> Void] = [:]
     
     var serverIP: String
     private let serverPort: Int
@@ -224,16 +225,32 @@ public class ROS2WebSocketManager: ObservableObject {
     }
     
     private func handleServiceResponse(_ json: [String: Any]) {
-        // Handle service responses
-        if let service = json["service"] as? String {
-            print("🔔 Service response from \(service): \(json)")
-            
-            // If this is our connection test service call, we know rosbridge is working
-            if service == "/rosapi/topics" {
-                print("✅ Rosbridge service call successful - connection is working!")
-            }
+        // Get the service call ID
+        guard let serviceId = json["id"] as? String else {
+            print("🔔 Service response without ID: \(json)")
+            return
+        }
+        
+        // Check if we have a completion handler for this service call
+        guard let completion = serviceCallHandlers[serviceId] else {
+            print("🔔 Service response for unknown ID: \(serviceId)")
+            return
+        }
+        
+        // Remove the handler
+        serviceCallHandlers.removeValue(forKey: serviceId)
+        
+        // Check if we have values in the response
+        if let values = json["values"] as? [String: Any] {
+            print("✅ Service response received for ID: \(serviceId)")
+            completion(.success(values))
+        } else if let result = json["result"] as? Bool, result == false {
+            let errorMsg = json["error"] as? String ?? "Service call failed"
+            print("❌ Service call failed: \(errorMsg)")
+            completion(.failure(NSError(domain: "ROS2Service", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMsg])))
         } else {
-            print("🔔 Service response: \(json)")
+            // Return the entire json if no specific values field
+            completion(.success(json))
         }
     }
     
@@ -401,21 +418,22 @@ public class ROS2WebSocketManager: ObservableObject {
     
     // MARK: - Service Calls
     
-    func callService(service: String, request: [String: Any] = [:], completion: @escaping (Result<[String: Any], Error>) -> Void) {
+    func callService(service: String, serviceType: String = "std_srvs/srv/Trigger", request: [String: Any] = [:], completion: @escaping (Result<[String: Any], Error>) -> Void) {
         let serviceId = "service_\(UUID().uuidString)"
         
         let message: [String: Any] = [
             "op": "call_service",
             "id": serviceId,
             "service": service,
+            "type": serviceType,
             "args": request
         ]
         
         // Store completion handler for this service call
-        // Note: In a production app, you'd want a more robust service call management system
+        serviceCallHandlers[serviceId] = completion
         
         sendMessage(message)
-        print("🔔 Called service \(service)")
+        print("🔔 Called service \(service) with ID: \(serviceId)")
     }
     
     // MARK: - Connection Testing

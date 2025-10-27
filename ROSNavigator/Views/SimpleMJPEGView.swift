@@ -57,9 +57,9 @@ struct SimpleMJPEGView: UIViewRepresentable {
                         align-items: center;
                     }
                     .stream-image {
-                        max-width: 100%;
-                        max-height: 100%;
-                        object-fit: contain;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
                         background-color: black;
                     }
                     .error-message {
