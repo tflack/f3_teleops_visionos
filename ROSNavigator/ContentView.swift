@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(AppModel.self) private var appModel
-    @State private var showVideoTest = false
     @State private var hasSelectedRobot = false
     @State private var isTeleoperationActive = false
     
@@ -161,28 +160,6 @@ struct ContentView: View {
             
                         Spacer()
 
-                        // Test button
-                        Button {
-                            showVideoTest = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "wrench.and.screwdriver")
-                                Text("Test Video Stream")
-                            }
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 24)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.orange)
-                                .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
-                        )
-                        .padding(.horizontal)
-
                         // Start Teleoperation button
                         Button {
                             // Start teleoperation with selected robot
@@ -211,9 +188,6 @@ struct ContentView: View {
             .onAppear {
                 // Start checking robot connections asynchronously
                 appModel.checkRobotConnections()
-            }
-            .sheet(isPresented: $showVideoTest) {
-                SimpleMJPEGTestView()
             }
         }
     }

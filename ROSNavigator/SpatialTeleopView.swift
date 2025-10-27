@@ -45,15 +45,29 @@ struct SpatialTeleopView: View {
                 
                 Spacer()
                 
-                // Connection status
+                // Connection status (more prominent)
                 HStack(spacing: 8) {
                     Circle()
                         .fill(ros2Manager.isConnected ? .green : .red)
-                        .frame(width: 12, height: 12)
-                    Text(ros2Manager.isConnected ? "Connected" : "Disconnected")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .frame(width: 16, height: 16)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white.opacity(0.3), lineWidth: 2)
+                        )
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Robot Connection")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                        Text(ros2Manager.isConnected ? "Connected" : "Disconnected")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(ros2Manager.isConnected ? .green : .red)
+                    }
                 }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+                .background(Color.black.opacity(0.3))
+                .cornerRadius(8)
                 
                 // Exit button
                 Button(action: {
@@ -71,8 +85,8 @@ struct SpatialTeleopView: View {
                     .cornerRadius(8)
                 }
             }
-            .padding(.horizontal)
-            .padding(.top)
+            .padding(.horizontal, 20)
+            .padding(.top, 30)
             .padding(.bottom, 20)
             
             // Main content: Left side (controls/info) + Right side (camera column)
@@ -281,7 +295,7 @@ struct SpatialTeleopView: View {
                     }
                     .padding()
                 }
-                .frame(width: 300)
+                .frame(width: 400)
                 .background(Color.black.opacity(0.3))
                 .cornerRadius(12)
                 .padding(.leading, 20)
@@ -291,7 +305,24 @@ struct SpatialTeleopView: View {
                 // Right side: Camera column
                 ScrollView {
                     VStack(spacing: 4) {
-                        // SLAM Map
+    
+                        // RGB Camera Feed
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+                        
+                        // Heatmap Camera Feed
+                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
+                            .aspectRatio(16/9, contentMode: .fill)
+                            .frame(width: 720, height: 405)
+                            .clipped()
+                            .cornerRadius(12)
+                            .shadow(radius: 5)
+
+                   // SLAM Map
                         SLAMMapView(ros2Manager: ros2Manager)
                             .aspectRatio(16/9, contentMode: .fill)
                             .frame(width: 720, height: 405)
@@ -308,23 +339,6 @@ struct SpatialTeleopView: View {
                             .background(.black.opacity(0.8))
                             .cornerRadius(12)
                             .shadow(radius: 5)
-
-
-                        // RGB Camera Feed
-                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.rgb))
-                            .aspectRatio(16/9, contentMode: .fill)
-                            .frame(width: 720, height: 405)
-                            .clipped()
-                            .cornerRadius(12)
-                            .shadow(radius: 5)
-                        
-                        // Heatmap Camera Feed
-                        CameraFeedView(ros2Manager: ros2Manager, selectedCamera: .constant(.heatmap))
-                            .aspectRatio(16/9, contentMode: .fill)
-                            .frame(width: 720, height: 405)
-                            .clipped()
-                            .cornerRadius(12)
-                            .shadow(radius: 5)
                     
                     }
                     .padding(.bottom, 20)
@@ -334,6 +348,7 @@ struct SpatialTeleopView: View {
             }
         }
         .frame(minWidth: 2400, minHeight: 1600)
+        .edgesIgnoringSafeArea(.top) // Allow content to extend into safe area at top
         .onAppear {
             print("🌐 SpatialTeleopView onAppear called")
             setupROS2Connection()
