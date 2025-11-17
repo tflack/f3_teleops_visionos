@@ -112,7 +112,7 @@ struct PointCloud2: Codable {
         var points: [Point] = []
         
         for i in 0..<totalPoints {
-            if let point = point(at: i) {
+            if let point = point(at: i), point.isValid {
                 points.append(point)
             }
         }
@@ -120,18 +120,23 @@ struct PointCloud2: Codable {
         return points
     }
     
-    /// Sample points to avoid overwhelming the renderer
+    /// Sample points to avoid overwhelming the renderer (matching f3_teleops approach)
     func sampledPoints(maxCount: Int = 100000) -> [Point] {
-        let allPoints = allPoints()
+        let totalPoints = self.totalPoints
+        guard totalPoints > 0 else { return [] }
         
-        if allPoints.count <= maxCount {
-            return allPoints
+        // Sample points directly from data (more efficient than parsing all first)
+        let sampleRate = max(1, totalPoints / maxCount)
+        var points: [Point] = []
+        points.reserveCapacity(min(maxCount, totalPoints))
+        
+        for i in stride(from: 0, to: totalPoints, by: sampleRate) {
+            if let point = point(at: i), point.isValid {
+                points.append(point)
+            }
         }
         
-        let step = allPoints.count / maxCount
-        return stride(from: 0, to: allPoints.count, by: step).compactMap { index in
-            allPoints[index]
-        }
+        return points
     }
     
     // MARK: - Helper Methods
@@ -139,19 +144,51 @@ struct PointCloud2: Codable {
     private func extractFloat32(from data: Data, at offset: Int) -> Float {
         guard offset + 4 <= data.count else { return 0.0 }
         
+        // PointCloud2 data is typically little-endian (matching f3_teleops)
+        // Extract bytes and construct Float manually to handle endianness
         let bytes = data.subdata(in: offset..<offset + 4)
-        return bytes.withUnsafeBytes { bytes in
-            bytes.load(as: Float.self)
+        var uint32: UInt32 = 0
+        withUnsafeMutableBytes(of: &uint32) { dest in
+            if isBigendian {
+                // Big-endian: bytes are in reverse order
+                dest[0] = bytes[3]
+                dest[1] = bytes[2]
+                dest[2] = bytes[1]
+                dest[3] = bytes[0]
+            } else {
+                // Little-endian: bytes are in order
+                dest[0] = bytes[0]
+                dest[1] = bytes[1]
+                dest[2] = bytes[2]
+                dest[3] = bytes[3]
+            }
         }
+        return Float(bitPattern: uint32)
     }
     
     private func extractUInt32(from data: Data, at offset: Int) -> UInt32 {
         guard offset + 4 <= data.count else { return 0 }
         
+        // PointCloud2 data is typically little-endian (matching f3_teleops)
+        // Extract bytes and construct UInt32 manually to handle endianness
         let bytes = data.subdata(in: offset..<offset + 4)
-        return bytes.withUnsafeBytes { bytes in
-            bytes.load(as: UInt32.self)
+        var uint32: UInt32 = 0
+        withUnsafeMutableBytes(of: &uint32) { dest in
+            if isBigendian {
+                // Big-endian: bytes are in reverse order
+                dest[0] = bytes[3]
+                dest[1] = bytes[2]
+                dest[2] = bytes[1]
+                dest[3] = bytes[0]
+            } else {
+                // Little-endian: bytes are in order
+                dest[0] = bytes[0]
+                dest[1] = bytes[1]
+                dest[2] = bytes[2]
+                dest[3] = bytes[3]
+            }
         }
+        return uint32
     }
 }
 
