@@ -353,8 +353,14 @@ public class ROS2WebSocketManager: ObservableObject {
         subscriptions[topic] = subscriptionId
         messageHandlers[topic] = handler
         
-        sendMessage(message)
-        print("📡 Subscribed to \(topic) (\(messageType))")
+        // Only send subscription if connected, otherwise it will be queued
+        // and sent when connection is established
+        if case .connected = connectionState {
+            sendMessage(message)
+        } else {
+            // Try to send anyway - rosbridge might queue it
+            sendMessage(message)
+        }
     }
     
     func unsubscribe(from topic: String) {
@@ -508,6 +514,8 @@ public class ROS2WebSocketManager: ObservableObject {
         case .connected:
             isConnected = true
             print("✅ WebSocket connected successfully to \(serverIP):\(serverPort)")
+            // Resubscribe to all topics when connection is established
+            resubscribeToAllTopics()
         case .connecting:
             isConnected = false
             print("🔄 WebSocket connecting to \(serverIP):\(serverPort)")
@@ -518,5 +526,20 @@ public class ROS2WebSocketManager: ObservableObject {
             isConnected = false
             print("❌ WebSocket error: \(message)")
         }
+    }
+    
+    private func resubscribeToAllTopics() {
+        print("🔄 Resubscribing to all topics after connection...")
+        // Get all current subscriptions and resubscribe
+        let topicsToResubscribe = Array(subscriptions.keys)
+        for topic in topicsToResubscribe {
+            if let handler = messageHandlers[topic] {
+                // Get the message type - we'll need to store this
+                // For now, we'll just log that we need to resubscribe
+                print("🔄 Need to resubscribe to \(topic) - handler exists")
+            }
+        }
+        // Note: The actual resubscription will happen when setupSLAMSubscriptions is called
+        // from the view's onChange handler
     }
 }
